@@ -12,11 +12,11 @@
 <nav class="navbar navbar-primary">
   <div class="container-fluid" style="background-image: url('pics/4.jpg');">
     <div class="navbar-header">
-      <a class="navbar-brand" href="background.php">ChatsN'Chiens</a>
+      <a class="navbar-brand" href="view/global/background.php">ChatsN'Chiens</a>
     </div>
     <ul class="nav navbar-nav">
-    	<li  class="active"><a href="Home.php">Home</a></li>
-      <li><a href="Login.php">Login</a></li>
+    	<li  class="active"><a href="index.php">Home</a></li>
+      <li><a href="view/global/Login.php">Login</a></li>
     </ul>
   </div>
 </nav>   
