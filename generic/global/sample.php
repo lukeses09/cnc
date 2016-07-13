@@ -37,7 +37,7 @@ ul li{
 
 <body>
 <div class="page-header">
-  <h1>ChatsN'Chiens <small>Veterinary Clinic</small>  <a href="../../view/global/logout.php" class="navbar-brand pull-right"><strong>Logout</strong></a></h1>
+  <h1>ChatsN'Chiens <small>Veterinary Clinic</small>  <a href="logout.php" class="navbar-brand pull-right"><strong>Logout</strong></a></h1>
 
 </div>
 <div class="col-xs-3">
@@ -77,11 +77,11 @@ ul li{
       </div>
       <div id="collapse2" class="panel-collapse collapse">
         <ul class="panel-body nav">
-          <li><a href="registration.php">Registration</a></li>
-           <li><a href="appointment1.php">Appointment</a></li>
-          <li><a href="servicesandproducts.php">Services and Products</a></li>
-          <li><a href="treatment.php">Treatment</a></li>
-           <li><a href="payment.php">Payment</a></li>
+          <li><a href="../../view/registration/module.php">Registration</a></li>
+           <li><a href="../../view/appointment1/module.php">Appointment</a></li>
+          <li><a href="../../view/servicesandproducts/module.php">Services and Products</a></li>
+          <li><a href="../../view/treatment/module.php">Treatment</a></li>
+           <li><a href="../../view/payment/module.php">Payment</a></li>
         </ul>
       </div>
     </div>
@@ -94,8 +94,8 @@ ul li{
       </div>
       <div id="collapse3" class="panel-collapse collapse">
         <ul class="panel-body nav">
-          <li><a href="employee.php">Employee</a></li>
-          <li><a href="changepassword.php">Change Password</a></li>
+          <li><a href="../../view/employee/module.php">Employee</a></li>
+          <li><a href="../../view/changepassword/module.php">Change Password</a></li>
         </ul>
       </div>
     </div>
