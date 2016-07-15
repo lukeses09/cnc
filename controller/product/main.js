@@ -19,13 +19,13 @@ function populate_table_main(){
 	  {
 		populate_category_dropdown();
 		populate_packaging_dropdown();
-
+		populate_unit_dropdown();
 	    table_main.fnClearTable();      
 	    for(var i = 0; i < s.length; i++) 
 	    { 
 	      table_main.fnAddData
 	      ([
-	        s[i][1],s[i][2],s[i][3],s[i][4],s[i][5],
+	        s[i][1],s[i][2],s[i][3],s[i][4],s[i][5],s[i][6],
 	        '<button data-toggle="tooltip" onclick="client_row_view(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-warning " title="VIEW /Edit"> <i class="fa fa-eye"></i></button>',      	        
 	        '<button data-toggle="tooltip" onclick="client_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-danger" title="Delete"> <i class="fa fa-trash"></i> </button>',      
 	      ],false); 
@@ -76,69 +76,88 @@ function populate_packaging_dropdown(){
   //ajax end  
 } //
 
+function populate_unit_dropdown(){ 
+  //ajax now
+  $.ajax ({
+    type: "POST",
+    url: "../../model/unit/populate_table_main.php",
+    dataType: 'json',      
+    cache: false,
+    success: function(s)
+    {
+      $('#f_unit').empty();
+      $('#f_unit').html('<option selected="selected" value="none">--SELECT--</option>');
+      for(var i = 0; i < s.length; i++) { 
+        $('#f_unit').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+"("+s[i][1]+") "+s[i][2]+'</option>');
+      }       
+    }  
+  }); 
+  //ajax end  
+} //
+
+
 function reset(){
 	$('#btn_save').val('create');
-	$('#f_petname').val('');
-	$('#f_breed').val('none');
-	$('#f_color').val('');
-	$('#f_markings').val();
-	$('#f_birthdate').val();
+	$('#f_product').val('');
+	$('#f_weight').val('');
+	$('#f_price').val('');
+	$('#f_desc').val('');
 
-	$('#f_petname_div').removeClass('has-error');     
-	$('#f_breed_div').removeClass('has-error');     
-	$('#f_color_div').removeClass('has-error');     
-	$('#f_markings_div').removeClass('has-error');
-	$('#f_birthdate_div').removeClass('has-error');  
-	$('#f_sex_div').removeClass('has-error');     
+	$('#f_product_div').removeClass('has-error');     
+	$('#f_category_div').removeClass('has-error');     
+	$('#f_packaging_div').removeClass('has-error');     
+	$('#f_weight_div').removeClass('has-error');
+	$('#f_unit_div').removeClass('has-error');  
+	$('#f_price_div').removeClass('has-error');     
+	$('#f_desc_div').removeClass('has-error');     	
 }
 
 function validate_form(){
 	err = false;
 
-
-
-	if($('#f_petname').val()==''){
+	if($('#f_product').val()==''){
 		err = true;
-		$('#f_petname_div').addClass('has-error');
+		$('#f_product_div').addClass('has-error');
 	}
 	else
-		$('#f_petname_div').removeClass('has-error');	
+		$('#f_product_div').removeClass('has-error');	
 
-	if($('#f_breed').val()=='' || $('#f_breed').val()=='none'){
+	if($('#f_category').val()=='' || $('#f_category').val()=='none'){
 		err = true;
-		$('#f_breed_div').addClass('has-error');
+		$('#f_category_div').addClass('has-error');
 	}
 	else
-		$('#f_breed_div').removeClass('has-error');		
+		$('#f_category_div').removeClass('has-error');		
 
-	if($('#f_color').val()==''){
+	if($('#f_packaging').val()=='' || $('#f_packaging').val()=='none'){
 		err = true;
-		$('#f_color_div').addClass('has-error');
+		$('#f_packaging_div').addClass('has-error');
 	}
 	else
-		$('#f_color_div').removeClass('has-error');	
+		$('#f_packaging_div').removeClass('has-error');	
 
-	if($('#f_markings').val()==''){
+	if($('#f_unit').val()=='' || $('#f_unit').val()=='none'){
 		err = true;
-		$('#f_markings_div').addClass('has-error');
+		$('#f_unit_div').addClass('has-error');
 	}
 	else
-		$('#f_markings_div').removeClass('has-error');	
+		$('#f_unit_div').removeClass('has-error');	
 
-	if($('#f_birthdate').val()==''){
+	if($('#f_weight').val()==''){
 		err = true;
-		$('#f_birthdate_div').addClass('has-error');
+		$('#f_weight_div').addClass('has-error');
 	}
 	else
-		$('#f_birthdate_div').removeClass('has-error');	
+		$('#f_weight_div').removeClass('has-error');	
 
-
-	if($('#f_sex').val()=='' || $('#f_sex').val()=='none'){
+	if($('#f_price').val()=='' || $('#f_price').val()<=0){
 		err = true;
-		$('#f_sex_div').addClass('has-error');
+		$('#f_price_div').addClass('has-error');
 	}
 	else
-		$('#f_sex_div').removeClass('has-error');	
+		$('#f_price_div').removeClass('has-error');	
+
+
 	/*if($('#f_contact').val()==''){
 		err = true;
 		$('#f_contact_div').addClass('has-error');
@@ -254,20 +273,21 @@ $('#btn_save').click(function(){
 	if(validate_form()==true){}
 	else{
 
-		var pet_name = $('#f_petname').val();
-		var breed = $('#f_breed').val();
-		var color = $('#f_color').val();
-		var markings = $('#f_markings').val();
-		var birthdate = $('#f_birthdate').val();
-		var sex = $('#f_sex').val();
+		var product = $('#f_product').val();
+		var category = $('#f_category').val();
+		var packaging = $('#f_packaging').val();
+		var weight = $('#f_weight').val();
+		var unit = $('#f_unit').val();
+		var price = $('#f_price').val();
+		var desc = $('#f_desc').val();
 
-		var dataString = 'pet_name='+pet_name+'&breed='+breed+'&color='+color+'&markings='+markings+'&birthdate='+birthdate+'&sex='+sex;
+		var dataString = 'product='+product+'&category='+category+'&packaging='+packaging+'&weight='+weight+'&unit='+unit+'&price='+price+'&desc='+desc;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/pet/create.php",
+			  url: "../../model/product/create.php",
 			  data: dataString,
 			  dataType: 'json',      
 			  cache: false,

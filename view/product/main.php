@@ -72,8 +72,9 @@
                     <th>Product</th>    
                     <th>Category</th>                     
                     <th>Packaging</th>                     
-                    <th>Weight</th>                     
-                    <th>Description</th>                                                                                                                      
+                    <th>Weight</th>     
+                    <th>Price</th>                                                                                                                                                          
+                    <th>Description</th>
                     <th style="width: 10px"></th>                       
                     <th style="width: 10px"></th>
                   </tr>

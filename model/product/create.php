@@ -1,18 +1,20 @@
 <?php
     include('../master/connect.php');
 
-$pet_name = trim($_POST['pet_name']);
-$breed = trim($_POST['breed']);
-$color = trim($_POST['color']);
-$markings = trim($_POST['markings']);
-$birthdate = $_POST['birthdate'];
-$sex = trim($_POST['sex']);
+$product = trim($_POST['product']);
+$category = trim($_POST['category']);
+$packaging = trim($_POST['packaging']);
+$weight = trim($_POST['weight']);
+$unit = $_POST['unit'];
+$price = trim($_POST['price']);
+$desc = trim($_POST['desc']);
 
-$id = uniqid('PT');
 
-  $sql = "INSERT INTO patient values(?,?,?,?,?,?,?,?,?)";
+$id = uniqid('PR');
+
+  $sql = "INSERT INTO products values(?,?,?,?,?,?,?,?,?)";
   $q = $conn->prepare($sql);
-  $q -> execute(array(null,$id,$pet_name,$breed,$color,$markings,$birthdate,$sex,'active'));
+  $q -> execute(array($id,$product,$category,$packaging,$weight,$unit,$desc,$price,'active'));
      
 
 $conn = null;             
