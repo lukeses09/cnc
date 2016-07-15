@@ -43,6 +43,10 @@ show specific links else not admin it will hide it)   using if else conditions i
             <a href="../breed/main.php"><i class="fa fa-paw"></i>Breed</a></a>
         </li>
 
+        <li>
+            <a href="../unit/main.php"><i class="fa fa-opencart"></i>Unit</a></a>
+        </li>
+
         </li>
     </ul>
                 </div>
