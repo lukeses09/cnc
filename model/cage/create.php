@@ -5,7 +5,7 @@ $cage_name = trim($_POST['cage_name']);
 $cage_size = trim($_POST['cage_size']);
 $price = trim($_POST['price']);
 
-$id = uniqid('SV');
+$id = uniqid('CG');
 
   $sql = "INSERT INTO cage values(?,?,?,?,?)";
   $q = $conn->prepare($sql);

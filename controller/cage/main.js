@@ -179,7 +179,7 @@ function client_row_view(id){
 	  	$('#btn_save').val(id);
 
 	  	$('#f_cage_name').val(s[0][0]);	 // fetch name to field
-	  	$('#f_category').val(s[0][1]);	 // fetch name to field
+	  	$('#f_cage_size').val(s[0][1]);	 // fetch name to field
 	  	$('#f_price').val(s[0][2]);	 // fetch name to field			  			  		  			  		  	
 	  }  
 	}); 

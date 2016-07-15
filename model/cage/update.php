@@ -2,14 +2,14 @@
     include('../master/connect.php');
 
 $id = $_POST['id'];
-$service_name = trim($_POST['service_name']);
-$category = trim($_POST['category']);
+$cage_name = trim($_POST['cage_name']);
+$cage_size = trim($_POST['cage_size']);
 $price = trim($_POST['price']);
 
 
-  $sql = "UPDATE services SET service_name=?, category=?, price=? where service_id=?";
+  $sql = "UPDATE cage SET cage_name=?, cage_size=?, price=? where cage_id=?";
   $q = $conn->prepare($sql);
-  $q -> execute(array($service_name, $category, $price, $id));
+  $q -> execute(array($cage_name, $cage_size, $price, $id));
      
 $conn = null;             
 

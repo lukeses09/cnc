@@ -3,13 +3,13 @@
 
   $id = $_POST['id'];
 
-  $sql = "SELECT * FROM services WHERE service_id = ?";
+  $sql = "SELECT * FROM cage WHERE cage_id = ?";
   $q = $conn->prepare($sql);
   $q -> execute(array($id));
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['service_name'],$fetch['category'],$fetch['price']);				 	
+    $output[] = array ($fetch['cage_name'],$fetch['cage_size'],$fetch['price']);				 	
   }         
 $conn = null;             
 
