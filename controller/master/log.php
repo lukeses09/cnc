@@ -2,7 +2,7 @@
   if(!isset($_SESSION)) 
   { session_start(); }
   
-  if($_SESSION["mosys_user_name"]=="" || $_SESSION["mosys_user_type"]=="")
+  if($_SESSION["chatsnchiens_user_name"]=="" || $_SESSION["chatsnchiens_user_type"]=="")
   {?>
     <script type="text/javascript">   
       function Redirect() 
@@ -14,8 +14,8 @@
     </script>
   <?php } 
   else{
-  $mosys_user_name = $_SESSION["mosys_user_name"];
-  $mosys_user_type = $_SESSION["mosys_user_type"];
+  $chatsnchiens_user_name = $_SESSION["chatsnchiens_user_name"];
+  $chatsnchiens_user_type = $_SESSION["chatsnchiens_user_type"];
   }
-  echo'<input type="hidden" id="mosys_user_type" value="'.$mosys_user_type.'">';  
+  echo'<input type="hidden" id="chatsnchiens_user_type" value="'.$chatsnchiens_user_type.'">';  
 ?>
