@@ -5,7 +5,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Species</title>
+    <title>Category</title>
 	<!-- BOOTSTRAP STYLES-->
      <!-- FONTAWESOME STYLES-->
     <link href="../../assets/css/custom.css" rel="stylesheet" />
@@ -52,7 +52,7 @@
             <div id="page-inner">
 
                 <div class="row">
-                    <div class="col-md-8 col-xs-12"><h2 style="color:grey"><i class="fa fa-paw"></i> Species </h2></div>
+                    <div class="col-md-8 col-xs-12"><h2 style="color:grey"><i class="fa fa-opencart"></i> Category </h2></div>
                     <div class="col-md-2 col-xs-12"><br><button id="btn_reset" class="btn btn-block btn-lg">Reset</button></div>                    
                     <div class="col-md-2 col-xs-12"><br><button id="btn_save" value="create" class="btn btn-block btn-success btn-lg">SAVE</button></div>
                 </div>      
@@ -69,7 +69,7 @@
               <table id="table_main" class="table table-condensed table-striped table-hover">
                 <thead>
                   <tr>
-                    <th>Species Name</th>                     
+                    <th>Category Name</th>                     
                     <th style="width: 10px"></th>                       
                     <th style="width: 10px"></th>
                   </tr>
@@ -105,7 +105,7 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
       <!-- BOOTSTRAP SCRIPTS -->
 
-    <script src="../../controller/species/main.js" type="text/javascript"></script>
+    <script src="../../controller/category/main.js" type="text/javascript"></script>
     <script type="text/javascript">
 
     </script>

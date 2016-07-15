@@ -3,10 +3,10 @@
 
 $id = $_POST['id'];
 
-  $sql = "UPDATE species SET status = 'inactive' WHERE species_id = ?";
+  $sql = "UPDATE category SET cat_status = 'inactive' WHERE cat_id = ?";
   $q = $conn->prepare($sql);
   $q -> execute(array($id));
-     
+  
 $conn = null;             
 
 echo json_encode($output);

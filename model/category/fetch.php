@@ -3,13 +3,13 @@
 
   $id = $_POST['id'];
 
-  $sql = "SELECT * FROM species WHERE species_id = ?";
+  $sql = "SELECT * FROM category WHERE cat_id = ?";
   $q = $conn->prepare($sql);
   $q -> execute(array($id));
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['species_name']);				 	
+    $output[] = array ($fetch['cat_name']);				 	
   }         
 $conn = null;             
 

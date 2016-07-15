@@ -1,14 +1,14 @@
 <?php
     include('../master/connect.php');
 
-$species_name = trim($_POST['species_name']);
+$category = trim($_POST['category']);
 
 
-$id = uniqid('SP');
+$id = uniqid('C');
 
-  $sql = "INSERT INTO species values(?,?,?)";
+  $sql = "INSERT INTO category values(?,?,?)";
   $q = $conn->prepare($sql);
-  $q -> execute(array($id,$species_name,'active'));
+  $q -> execute(array($id,$category,'active'));
      
 
 $conn = null;             

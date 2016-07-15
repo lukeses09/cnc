@@ -4,7 +4,7 @@
 
 
   var table_main = $('#table_main').dataTable({
-    "aoColumnDefs": [ { "bSortable": false, "aTargets": [] } ],
+    "aoColumnDefs": [ { "bSortable": false, "aTargets": [1,2] } ],
     "aaSorting": []
   });  //Initialize the datatable
 
@@ -12,7 +12,7 @@ function populate_table_main(){
 	//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/species/populate_table_main.php",
+	  url: "../../model/category/populate_table_main.php",
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s)
@@ -36,27 +36,10 @@ function populate_table_main(){
 
 function reset(){
 	$('#btn_save').val('create');
-	$('#f_name').val('');
-	$('#f_contact').val('');
-	$('#f_bdate').val('');
-	$('#f_gender').val('none');
-	$('#f_mstatus').val('single');
-	$('#f_address').val('');
-	$('#f_job').val('');
-	$('#f_spouse').val('');
-	$('#f_dependents').val('');
+	$('#f_category').val('');
 
-	$('#f_name_div').removeClass('has-error');     
-	$('#f_contact_div').removeClass('has-error');     
-	$('#f_bdate_div').removeClass('has-error');     
-	$('#f_gender_div').removeClass('has-error');
-	$('#f_mstatus_div').removeClass('has-error');  
-	$('#f_address_div').removeClass('has-error');     
-	$('#f_job_div').removeClass('has-error');     
-	$('#f_spouse_div').removeClass('has-error');     
-	$('#f_dependents_div').removeClass('has-error');     
 
-	$('#spouse_div').css('display','none');
+	$('#f_category_div').removeClass('has-error');     
 }
 
 function validate_form(){
@@ -64,12 +47,12 @@ function validate_form(){
 
 
 
-	if($('#f_name').val()==''){
+	if($('#f_category').val()==''){
 		err = true;
-		$('#f_name_div').addClass('has-error');
+		$('#f_category_div').addClass('has-error');
 	}
 	else
-		$('#f_name_div').removeClass('has-error');		
+		$('#f_category_div').removeClass('has-error');		
 
 	/*if($('#f_contact').val()==''){
 		err = true;
@@ -138,12 +121,7 @@ function validate_form(){
 	return err;				
 }
 
-function showSpouse(get){
-	$('#f_spouse_div').removeClass('has-error');     
-	$('#f_dependents_div').removeClass('has-error');  	
-	if(get=='married'){$('#spouse_div').css('display','block');}
-	else{ $('#spouse_div').css('display','none'); }
-}
+
 
 function client_row_del(id){
 
@@ -152,7 +130,7 @@ function client_row_del(id){
   			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/species/delete.php",
+			  url: "../../model/category/delete.php",
 			  data: 'id='+id,
 			  dataType: 'json',      
 			  cache: false,
@@ -169,14 +147,14 @@ function client_row_view(id){
 		//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/species/fetch.php",
+	  url: "../../model/category/fetch.php",
 	  data: 'id='+id,
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s){		
 	  	$('#btn_save').val(id);
 
-	  	$('#f_name').val(s[0][0]);	
+	  	$('#f_category').val(s[0][0]);	
 	  			  		
 	  	
 	  }  
@@ -191,15 +169,15 @@ $('#btn_save').click(function(){
 	if(validate_form()==true){}
 	else{
 
-		var species_name = $('#f_name').val();
+		var category = $('#f_category').val();
 
-		var dataString = 'species_name='+species_name;
+		var dataString = 'category='+category;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/species/create.php",
+			  url: "../../model/category/create.php",
 			  data: dataString,
 			  dataType: 'json',      
 			  cache: false,
@@ -215,7 +193,7 @@ $('#btn_save').click(function(){
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/species/update.php",
+			  url: "../../model/category/update.php",
 			  data: dataString+'&id='+id,
 			  dataType: 'json',      
 			  cache: false,

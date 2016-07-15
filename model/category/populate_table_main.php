@@ -2,14 +2,14 @@
     include('../master/connect.php');
 
 
-  $sql = "SELECT * from species where status='active'";
+  $sql = "SELECT * from category where cat_status='active'";
   $q = $conn->prepare($sql);
   $q -> execute();
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['species_id'],
-    	$fetch['species_name']);				 	
+    $output[] = array ($fetch['cat_id'],$fetch['cat_name'],
+    	$fetch['cat_status']);				 	
   }         
 $conn = null;             
 

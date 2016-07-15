@@ -2,12 +2,12 @@
     include('../master/connect.php');
 
 $id = $_POST['id'];
-$species_name = trim($_POST['species_name']);
+$category = trim($_POST['category']);
 
 
-  $sql = "UPDATE species SET species_name=? where species_id=?";
+  $sql = "UPDATE category SET cat_name=? where cat_id=?";
   $q = $conn->prepare($sql);
-  $q -> execute(array($species_name, $id));
+  $q -> execute(array($category, $id));
      
 $conn = null;             
 
