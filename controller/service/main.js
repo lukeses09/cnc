@@ -145,12 +145,6 @@ function validate_form(){
 	return err;				
 }
 
-function showSpouse(get){
-	$('#f_spouse_div').removeClass('has-error');     
-	$('#f_dependents_div').removeClass('has-error');  	
-	if(get=='married'){$('#spouse_div').css('display','block');}
-	else{ $('#spouse_div').css('display','none'); }
-}
 
 function client_row_del(id){
 
@@ -184,11 +178,8 @@ function client_row_view(id){
 	  	$('#btn_save').val(id);
 
 	  	$('#f_service_name').val(s[0][0]);	 // fetch name to field
-	  	$('#f_abbreviation').val(s[0][1]);	 // fetch name to field
-	  	$('#f_service_type').val(s[0][2]);	 // fetch name to field
-			  			  		
-  			  		
-	  	
+	  	$('#f_category').val(s[0][1]);	 // fetch name to field
+	  	$('#f_price').val(s[0][2]);	 // fetch name to field			  			  		  			  		  	
 	  }  
 	}); 
 	//ajax end
@@ -202,10 +193,10 @@ $('#btn_save').click(function(){
 	else{
 
 		var service_name = $('#f_service_name').val();
-		var abbreviation = $('#f_abbreviation').val();
-		var service_type = $('#f_service_type').val();
+		var category = $('#f_category').val();
+		var price = $('#f_price').val();
 
-		var dataString = 'service_name='+service_name+'&abbreviation='+abbreviation+'&service_type='+service_type;
+		var dataString = 'service_name='+service_name+'&category='+category+'&price='+price;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now

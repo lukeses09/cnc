@@ -2,14 +2,14 @@
     include('../master/connect.php');
 
 $id = $_POST['id'];
-$unit_name = trim($_POST['unit_name']);
-$abbreviation = trim($_POST['abbreviation']);
-$unit_type = trim($_POST['unit_type']);
+$service_name = trim($_POST['service_name']);
+$category = trim($_POST['category']);
+$price = trim($_POST['price']);
 
 
-  $sql = "UPDATE units SET unit_name=?, unit_abbreviation=?, unit_type=? where unit_id=?";
+  $sql = "UPDATE services SET service_name=?, category=?, price=? where service_id=?";
   $q = $conn->prepare($sql);
-  $q -> execute(array($unit_name, $abbreviation, $unit_type, $id));
+  $q -> execute(array($service_name, $category, $price, $id));
      
 $conn = null;             
 
