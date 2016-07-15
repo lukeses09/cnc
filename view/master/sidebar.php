@@ -55,6 +55,22 @@ show specific links else not admin it will hide it)   using if else conditions i
             <a href="../packaging/main.php"><i class="fa fa-opencart"></i>Packaging</a></a>
         </li>
 
+        <li>
+            <a href="../medicine/main.php"><i class="fa fa-plus-square-o"></i>Medicines</a></a>
+        </li>
+
+        <li>
+            <a href="../generic/main.php"><i class="fa fa-plus-square-o"></i>Generic</a></a>
+        </li>
+
+        <li>
+            <a href="../brand/main.php"><i class="fa fa-plus-square-o"></i>Brand</a></a>
+        </li>
+
+        <li>
+            <a href="../dosage/main.php"><i class="fa fa-plus-square-o"></i>Dosage Form</a></a>
+        </li>   
+
         </li>
     </ul>
                 </div>

@@ -127,6 +127,22 @@
                         <a href="view/packaging/main.php"><i class="fa fa-opencart"></i>Packaging</a></a>
                     </li>
 
+                    <li>
+                        <a href="view/medicine/main.php"><i class="fa fa-plus-square-o"></i>Medicines</a></a>
+                    </li>
+
+                    <li>
+                        <a href="view/generic/main.php"><i class="fa fa-plus-square-o"></i>Generic</a></a>
+                    </li>
+
+                    <li>
+                        <a href="view/brand/main.php"><i class="fa fa-plus-square-o"></i>Brand</a></a>
+                    </li>
+
+                    <li>
+                        <a href="view/dosage/main.php"><i class="fa fa-plus-square-o"></i>Dosage Form</a></a>
+                    </li>        
+                                                                        
                 </ul>
             </div>
 
