@@ -74,6 +74,9 @@ show specific links else not admin it will hide it)   using if else conditions i
             <a href="../service/main.php"><i class="fa fa-send-o"></i>Service</a></a>
         </li>
 
+        <li>
+            <a href="../Cage/main.php"><i class="fa fa-cubes"></i>Cages</a></a>
+        </li>
     </ul>
                 </div>
 

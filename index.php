@@ -144,7 +144,10 @@
                     </li>        
                     <li>
                         <a href="view/service/main.php"><i class="fa fa-send-o"></i>Service</a></a>
-                    </li >                                                                       
+                    </li >  
+                    <li>
+                        <a href="view/Cage/main.php"><i class="fa fa-cubes"></i>Cages</a></a>
+                    </li >                                                                                            
                 </ul>
             </div>
 
@@ -174,23 +177,7 @@
                 <!-- DASHBOARD MENU SHORTCUTS -->
                   <!-- /. ROW  --> 
 
-                <div class="row text-center pad-top">
-
-                  <div id="menu_users" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain User Accounts">
-                      <div class="div-square">
-                         <a href="view/user/main.php" ><i class="fa fa-user fa-5x"></i>
-                           <h4>Users</h4>
-                         </a>
-                      </div>                                          
-                  </div> <!--col-->
-              
-                  <div id="menu_clients" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Clients">
-                      <div class="div-square">
-                         <a href="view/client/main.php" ><i class="fa fa-users fa-5x"></i>
-                           <h4>Clients</h4>
-                         </a>
-                      </div>                                          
-                  </div> <!--col-->  
+                <div class="row text-center pad-top">                                      
 
                   <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Pets">
                       <div class="div-square">
@@ -220,9 +207,24 @@
                            <h4>Service</h4>
                          </a>
                       </div>                                          
-                  </div> <!--col-->    
+                  </div> <!--col-->   
 
+                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Cage">
+                      <div class="div-square">
+                         <a href="view/Cage/main.php" ><i class="fa fa-cubes fa-5x"></i>
+                           <h4>Cage</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->   
 
+                  <div id="menu_clients" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Clients">
+                      <div class="div-square">
+                         <a href="view/client/main.php" ><i class="fa fa-users fa-5x"></i>
+                           <h4>Clients</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->  
+ 
                 </div><!--/.row-->
 
                 <div class="row text-center pad-top">
@@ -290,7 +292,17 @@
                            <h4>Dosage Form</h4>
                          </a>
                       </div>                                          
-                  </div> <!--col-->                                      
+                  </div> <!--col-->  
+
+                  <div id="menu_users" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain User Accounts">
+                      <div class="div-square">
+                         <a href="view/user/main.php" ><i class="fa fa-user fa-5x"></i>
+                           <h4>Users</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->
+              
+
                 </div><!--/.row-->
 
              <!-- /. PAGE INNER  -->
