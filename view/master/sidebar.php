@@ -70,8 +70,10 @@ show specific links else not admin it will hide it)   using if else conditions i
         <li>
             <a href="../dosage/main.php"><i class="fa fa-plus-square-o"></i>Dosage Form</a></a>
         </li>   
-
+        <li>
+            <a href="../service/main.php"><i class="fa fa-send-o"></i>Service</a></a>
         </li>
+
     </ul>
                 </div>
 

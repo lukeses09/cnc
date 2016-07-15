@@ -142,7 +142,9 @@
                     <li>
                         <a href="view/dosage/main.php"><i class="fa fa-plus-square-o"></i>Dosage Form</a></a>
                     </li>        
-                                                                        
+                    <li>
+                        <a href="view/service/main.php"><i class="fa fa-send-o"></i>Service</a></a>
+                    </li >                                                                       
                 </ul>
             </div>
 
@@ -212,6 +214,13 @@
                       </div>                                          
                   </div> <!--col-->           
 
+                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Service">
+                      <div class="div-square">
+                         <a href="view/Service/main.php" ><i class="fa fa-send-o fa-5x"></i>
+                           <h4>Service</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->    
 
 
                 </div><!--/.row-->
