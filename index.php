@@ -171,11 +171,12 @@
 
                 <!-- DASHBOARD MENU SHORTCUTS -->
                   <!-- /. ROW  --> 
+
                 <div class="row text-center pad-top">
- 
+
                   <div id="menu_users" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain User Accounts">
                       <div class="div-square">
-                         <a href="view/user/main.php" ><i class="fa fa-users fa-5x"></i>
+                         <a href="view/user/main.php" ><i class="fa fa-user fa-5x"></i>
                            <h4>Users</h4>
                          </a>
                       </div>                                          
@@ -183,22 +184,105 @@
               
                   <div id="menu_clients" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Clients">
                       <div class="div-square">
-                         <a href="view/client/main.php" ><i class="fa fa-user fa-5x"></i>
+                         <a href="view/client/main.php" ><i class="fa fa-users fa-5x"></i>
                            <h4>Clients</h4>
-                         </a>
-                      </div>                                          
-                  </div> <!--col-->                                                                           
-
-                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Discounts">
-                      <div class="div-square">
-                         <a href="view/duration/main.php" ><i class="fa fa-sitemap fa-5x"></i>
-                           <h4>Discounts</h4>
                          </a>
                       </div>                                          
                   </div> <!--col-->  
 
-              </div><!-- ROW-->
+                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Pets">
+                      <div class="div-square">
+                         <a href="view/pet/main.php" ><i class="fa fa-paw fa-5x"></i>
+                           <h4><strong>PETS</strong></h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->      
+                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Species">
+                      <div class="div-square">
+                         <a href="view/species/main.php" ><i class="fa fa-paw fa-5x"></i>
+                           <h4>Species</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->   
+                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Breed">
+                      <div class="div-square">
+                         <a href="view/breed/main.php" ><i class="fa fa-paw fa-5x"></i>
+                           <h4>Breed</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->           
 
+
+
+                </div><!--/.row-->
+
+                <div class="row text-center pad-top">
+ 
+                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Products">
+                      <div class="div-square">
+                         <a href="view/product/main.php" ><i class="fa fa-opencart fa-5x"></i>
+                           <h4><strong>PRODUCTS</strong></h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->      
+                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Unit">
+                      <div class="div-square">
+                         <a href="view/Unit/main.php" ><i class="fa fa-opencart fa-5x"></i>
+                           <h4>Unit</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->   
+                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Category">
+                      <div class="div-square">
+                         <a href="view/Category/main.php" ><i class="fa fa-opencart fa-5x"></i>
+                           <h4>Category</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->                                                                           
+
+                   <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Packaging">
+                      <div class="div-square">
+                         <a href="view/Packaging/main.php" ><i class="fa fa-opencart fa-5x"></i>
+                           <h4>Packaging</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->       
+
+
+                  <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Medicine">
+                      <div class="div-square">
+                         <a href="view/Medicine/main.php" ><i class="fa fa-medkit fa-5x"></i>
+                           <h4><strong>Medicine</strong></h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->                                                                           
+
+                   <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Generic">
+                      <div class="div-square">
+                         <a href="view/Generic/main.php" ><i class="fa fa-medkit fa-5x"></i>
+                           <h4>Generic</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->    
+
+                </div><!-- ROW-->
+
+                <div class="row text-center pad-top">
+                   <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Brand">
+                      <div class="div-square">
+                         <a href="view/Brand/main.php" ><i class="fa fa-medkit fa-5x"></i>
+                           <h4>Brand</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->  
+                   <div id="menu_discounts" class="col-lg-2 col-md-2 col-sm-2 col-xs-6" title="Maintain Dosage Form">
+                      <div class="div-square">
+                         <a href="view/Dosage/main.php" ><i class="fa fa-medkit fa-5x"></i>
+                           <h4>Dosage Form</h4>
+                         </a>
+                      </div>                                          
+                  </div> <!--col-->                                      
+                </div><!--/.row-->
 
              <!-- /. PAGE INNER  -->
             </div>
