@@ -17,9 +17,11 @@ function populate_table_main(){
 	  cache: false,
 	  success: function(s)
 	  {
-		//populate_category_dropdown();
-		//populate_packaging_dropdown();
-		//populate_unit_dropdown();
+		populate_category_dropdown();
+		populate_packaging_dropdown();
+		populate_dosage_dropdown();		
+		populate_unit_dropdown();
+		
 	    table_main.fnClearTable();      
 	    for(var i = 0; i < s.length; i++) 
 	    { 
@@ -48,7 +50,7 @@ function populate_category_dropdown(){
     success: function(s)
     {
       $('#f_category').empty();
-      $('#f_category').html('<option selected="selected" value="none">--SEARCH CATEGORY--</option>');
+      $('#f_category').html('<option selected="selected" value="none">--SELECT CATEGORY--</option>');
       for(var i = 0; i < s.length; i++) { 
         $('#f_category').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
       }       
@@ -67,9 +69,28 @@ function populate_packaging_dropdown(){
     success: function(s)
     {
       $('#f_packaging').empty();
-      $('#f_packaging').html('<option selected="selected" value="none">--SEARCH PACKAGING--</option>');
+      $('#f_packaging').html('<option selected="selected" value="none">--SELECT PACKAGING--</option>');
       for(var i = 0; i < s.length; i++) { 
         $('#f_packaging').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
+      }       
+    }  
+  }); 
+  //ajax end  
+} //
+
+function populate_dosage_dropdown(){ 
+  //ajax now
+  $.ajax ({
+    type: "POST",
+    url: "../../model/dosage/populate_table_main.php",
+    dataType: 'json',      
+    cache: false,
+    success: function(s)
+    {
+      $('#f_dosage').empty();
+      $('#f_dosage').html('<option selected="selected" value="none">--SELECT DOSAGE--</option>');
+      for(var i = 0; i < s.length; i++) { 
+        $('#f_dosage').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
       }       
     }  
   }); 
