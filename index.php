@@ -104,11 +104,11 @@
                     </li>
 
                     <li>
-                        <a href="view/species/main.php"><i class="fa fa-dog "></i>Species</a></a>
+                        <a href="view/species/main.php"><i class="fa fa-paw"></i>Species</a></a>
                     </li>
 
                     <li>
-                        <a href="view/breed/main.php"><i class="fa fa-dog "></i>Species</a></a>
+                        <a href="view/breed/main.php"><i class="fa fa-paw"></i>Breed</a></a>
                     </li>
 
                     

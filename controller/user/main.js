@@ -38,7 +38,7 @@ function populate_table_main(){
 	      table_main.fnAddData
 	      ([
 	        s[i][0],s[i][1],s[i][2],
-	        '<button data-toggle="tooltip" onclick="user_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn btn-xs  btn-danger" title="Delete" '+enability+'> <i class="fa fa-trash"></i> Delete </button>',      
+	        '<button data-toggle="tooltip" onclick="user_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn btn-danger" title="Delete" '+enability+'> <i class="fa fa-trash"></i> Delete </button>',      
 	      ],false); 
 	      table_main.fnDraw();
 
