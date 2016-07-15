@@ -2,13 +2,13 @@
     include('../master/connect.php');
 
 $id = $_POST['id'];
-$breed_name = trim($_POST['breed_name']);
-$species_id = trim($_POST['species_id']);
+$brand = trim($_POST['brand']);
+$generic = trim($_POST['generic']);
 
 
-  $sql = "UPDATE breed1 SET species_id=?, breed_name=? where breed_id=?";
+  $sql = "UPDATE brand SET brand_name=?, brand_generic_id=? where brand_id=?";
   $q = $conn->prepare($sql);
-  $q -> execute(array($species_id, $breed_name, $id));
+  $q -> execute(array($brand, $generic, $id));
      
 $conn = null;             
 

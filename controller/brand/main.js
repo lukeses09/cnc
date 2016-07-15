@@ -4,7 +4,7 @@
 
 
   var table_main = $('#table_main').dataTable({
-    "aoColumnDefs": [ { "bSortable": false, "aTargets": [] } ],
+    "aoColumnDefs": [ { "bSortable": false, "aTargets": [2,3] } ],
     "aaSorting": []
   });  //Initialize the datatable
 
@@ -12,12 +12,12 @@ function populate_table_main(){
 	//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/breed/populate_table_main.php",
+	  url: "../../model/brand/populate_table_main.php",
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s)
 	  {
-		populate_species_dropdown(); // function populate dropdown
+		populate_generic_dropdown(); // function populate dropdown
 
 	    table_main.fnClearTable();      
 	    for(var i = 0; i < s.length; i++) 
@@ -37,19 +37,19 @@ function populate_table_main(){
 } //
 
 
-function populate_species_dropdown(){ 
+function populate_generic_dropdown(){ 
   //ajax now
   $.ajax ({
     type: "POST",
-    url: "../../model/species/populate_table_main.php",
+    url: "../../model/generic/populate_table_main.php",
     dataType: 'json',      
     cache: false,
     success: function(s)
     {
-      $('#f_speciesname').empty();
-      $('#f_speciesname').html('<option selected="selected" value="none">--SEARCH SPECIES--</option>');
+      $('#f_generic').empty();
+      $('#f_generic').html('<option selected="selected" value="none">--SEARCH GENERIC--</option>');
       for(var i = 0; i < s.length; i++) { 
-        $('#f_speciesname').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
+        $('#f_generic').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
       }       
     }  
   }); 
@@ -59,27 +59,11 @@ function populate_species_dropdown(){
 
 function reset(){
 	$('#btn_save').val('create');
-	$('#f_name').val('');
-	$('#f_contact').val('');
-	$('#f_bdate').val('');
-	$('#f_gender').val('none');
-	$('#f_mstatus').val('single');
-	$('#f_address').val('');
-	$('#f_job').val('');
-	$('#f_spouse').val('');
-	$('#f_dependents').val('');
+	$('#f_brand').val('');
 
-	$('#f_name_div').removeClass('has-error');     
-	$('#f_contact_div').removeClass('has-error');     
-	$('#f_bdate_div').removeClass('has-error');     
-	$('#f_gender_div').removeClass('has-error');
-	$('#f_mstatus_div').removeClass('has-error');  
-	$('#f_address_div').removeClass('has-error');     
-	$('#f_job_div').removeClass('has-error');     
-	$('#f_spouse_div').removeClass('has-error');     
-	$('#f_dependents_div').removeClass('has-error');     
+	$('#f_brand_div').removeClass('has-error');     
+	$('#f_generic_div').removeClass('has-error');     
 
-	$('#spouse_div').css('display','none');
 }
 
 function validate_form(){
@@ -87,19 +71,19 @@ function validate_form(){
 
 
 
-	if($('#f_breedname').val()==''){
+	if($('#f_brand').val()==''){
 		err = true;
-		$('#f_breedname_div').addClass('has-error');
+		$('#f_brand_div').addClass('has-error');
 	}
 	else
-		$('#f_breedname_div').removeClass('has-error');	
+		$('#f_brand_div').removeClass('has-error');	
 
-	if($('#f_speciesname').val()=='' || $('#f_speciesname').val()=='none'){
+	if($('#f_generic').val()=='' || $('#f_generic').val()=='none'){
 		err = true;
-		$('#f_speciesname_div').addClass('has-error');
+		$('#f_generic_div').addClass('has-error');
 	}
 	else
-		$('#f_speciesname_div').removeClass('has-error');		
+		$('#f_generic_div').removeClass('has-error');		
 
 	/*if($('#f_contact').val()==''){
 		err = true;
@@ -168,13 +152,6 @@ function validate_form(){
 	return err;				
 }
 
-function showSpouse(get){
-	$('#f_spouse_div').removeClass('has-error');     
-	$('#f_dependents_div').removeClass('has-error');  	
-	if(get=='married'){$('#spouse_div').css('display','block');}
-	else{ $('#spouse_div').css('display','none'); }
-}
-
 function client_row_del(id){
 
   var choice = confirm("Are you sure you want to Delete?");
@@ -182,7 +159,7 @@ function client_row_del(id){
   			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/breed/delete.php",
+			  url: "../../model/brand/delete.php",
 			  data: 'id='+id,
 			  dataType: 'json',      
 			  cache: false,
@@ -199,14 +176,14 @@ function client_row_view(id){
 		//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/breed/fetch.php",
+	  url: "../../model/brand/fetch.php",
 	  data: 'id='+id,
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s){		
 	  	$('#btn_save').val(id);
 
-	  	$('#f_breedname').val(s[0][0]);	 // fetch name to breedname
+	  	$('#f_brand').val(s[0][0]);	 // fetch name to brandname
 			  			  		
 	    $('#opt'+s[0][1]).prop('selected',true); //selected dropdown
   			  		
@@ -223,16 +200,16 @@ $('#btn_save').click(function(){
 	if(validate_form()==true){}
 	else{
 
-		var breed_name = $('#f_breedname').val();
-		var species_id = $('#f_speciesname').val();
+		var brand = $('#f_brand').val();
+		var generic = $('#f_generic').val();
 
-		var dataString = 'breed_name='+breed_name+'&species_id='+species_id;
+		var dataString = 'brand='+brand+'&generic='+generic;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/breed/create.php",
+			  url: "../../model/brand/create.php",
 			  data: dataString,
 			  dataType: 'json',      
 			  cache: false,
@@ -248,7 +225,7 @@ $('#btn_save').click(function(){
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/breed/update.php",
+			  url: "../../model/brand/update.php",
 			  data: dataString+'&id='+id,
 			  dataType: 'json',      
 			  cache: false,

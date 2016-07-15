@@ -1,14 +1,14 @@
 <?php
     include('../master/connect.php');
 
-$species_id = trim($_POST['species_id']);
-$breed_name = trim($_POST['breed_name']);
+$brand = trim($_POST['brand']);
+$generic = trim($_POST['generic']);
 
-$id = uniqid('BR');
+$id = uniqid('B');
 
-  $sql = "INSERT INTO breed1 values(?,?,?,?)";
+  $sql = "INSERT INTO brand values(?,?,?,?)";
   $q = $conn->prepare($sql);
-  $q -> execute(array($id,$species_id,$breed_name,'active'));
+  $q -> execute(array($id,$generic,$brand,'active'));
      
 
 $conn = null;             

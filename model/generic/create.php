@@ -4,7 +4,7 @@
 $generic = trim($_POST['generic']);
 
 
-$id = uniqid('C');
+$id = uniqid('G');
 
   $sql = "INSERT INTO generic values(?,?,?)";
   $q = $conn->prepare($sql);

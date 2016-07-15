@@ -4,7 +4,7 @@
 $packaging = trim($_POST['packaging']);
 
 
-$id = uniqid('C');
+$id = uniqid('PK');
 
   $sql = "INSERT INTO packaging values(?,?,?)";
   $q = $conn->prepare($sql);
