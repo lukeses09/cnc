@@ -3,7 +3,7 @@
 
 $id = $_POST['id'];
 
-  $sql = "UPDATE category SET cat_status = 'inactive' WHERE cat_id = ?";
+  $sql = "UPDATE packaging SET pack_status = 'inactive' WHERE pack_id = ?";
   $q = $conn->prepare($sql);
   $q -> execute(array($id));
   

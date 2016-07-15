@@ -12,7 +12,7 @@ function populate_table_main(){
 	//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/category/populate_table_main.php",
+	  url: "../../model/packaging/populate_table_main.php",
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s)
@@ -36,10 +36,10 @@ function populate_table_main(){
 
 function reset(){
 	$('#btn_save').val('create');
-	$('#f_category').val('');
+	$('#f_packaging').val('');
 
 
-	$('#f_category_div').removeClass('has-error');     
+	$('#f_packaging_div').removeClass('has-error');     
 }
 
 function validate_form(){
@@ -47,12 +47,12 @@ function validate_form(){
 
 
 
-	if($('#f_category').val()==''){
+	if($('#f_packaging').val()==''){
 		err = true;
-		$('#f_category_div').addClass('has-error');
+		$('#f_packaging_div').addClass('has-error');
 	}
 	else
-		$('#f_category_div').removeClass('has-error');		
+		$('#f_packaging_div').removeClass('has-error');		
 
 	/*if($('#f_contact').val()==''){
 		err = true;
@@ -130,7 +130,7 @@ function client_row_del(id){
   			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/category/delete.php",
+			  url: "../../model/packaging/delete.php",
 			  data: 'id='+id,
 			  dataType: 'json',      
 			  cache: false,
@@ -147,14 +147,14 @@ function client_row_view(id){
 		//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/category/fetch.php",
+	  url: "../../model/packaging/fetch.php",
 	  data: 'id='+id,
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s){		
 	  	$('#btn_save').val(id);
 
-	  	$('#f_category').val(s[0][0]);	
+	  	$('#f_packaging').val(s[0][0]);	
 	  			  		
 	  	
 	  }  
@@ -169,15 +169,15 @@ $('#btn_save').click(function(){
 	if(validate_form()==true){}
 	else{
 
-		var category = $('#f_category').val();
+		var packaging = $('#f_packaging').val();
 
-		var dataString = 'category='+category;
+		var dataString = 'packaging='+packaging;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/category/create.php",
+			  url: "../../model/packaging/create.php",
 			  data: dataString,
 			  dataType: 'json',      
 			  cache: false,
@@ -193,7 +193,7 @@ $('#btn_save').click(function(){
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/category/update.php",
+			  url: "../../model/packaging/update.php",
 			  data: dataString+'&id='+id,
 			  dataType: 'json',      
 			  cache: false,

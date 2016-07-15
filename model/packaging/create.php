@@ -1,14 +1,14 @@
 <?php
     include('../master/connect.php');
 
-$category = trim($_POST['category']);
+$packaging = trim($_POST['packaging']);
 
 
 $id = uniqid('C');
 
-  $sql = "INSERT INTO category values(?,?,?)";
+  $sql = "INSERT INTO packaging values(?,?,?)";
   $q = $conn->prepare($sql);
-  $q -> execute(array($id,$category,'active'));
+  $q -> execute(array($id,$packaging,'active'));
      
 
 $conn = null;             

@@ -2,14 +2,14 @@
     include('../master/connect.php');
 
 
-  $sql = "SELECT * from category where cat_status='active'";
+  $sql = "SELECT * from packaging where pack_status='active'";
   $q = $conn->prepare($sql);
   $q -> execute();
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['cat_id'],$fetch['cat_name'],
-    	$fetch['cat_status']);				 	
+    $output[] = array ($fetch['pack_id'],$fetch['pack_name'],
+    	$fetch['pack_status']);				 	
   }         
 $conn = null;             
 
