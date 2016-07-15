@@ -110,6 +110,11 @@
                     <li>
                         <a href="view/breed/main.php"><i class="fa fa-paw"></i>Breed</a></a>
                     </li>
+
+                    <li>
+                        <a href="view/product/main.php"><i class="fa fa-opencart"></i>Product</a></a>
+                    </li>
+
                     <li>
                         <a href="view/unit/main.php"><i class="fa fa-opencart"></i>Unit</a></a>
                     </li>

@@ -40,6 +40,10 @@ show specific links else not admin it will hide it)   using if else conditions i
         </li>
 
         <li>
+            <a href="../product/main.php"><i class="fa fa-opencart"></i>Product</a></a>
+        </li>
+
+        <li>
             <a href="../unit/main.php"><i class="fa fa-opencart"></i>Unit</a></a>
         </li>
 
