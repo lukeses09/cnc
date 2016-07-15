@@ -31,6 +31,11 @@ show specific links else not admin it will hide it)   using if else conditions i
         </li>
 
         <li>
+            <a href="../pet/main.php"><i class="fa fa-paw"></i>Pets</a></a>
+        </li>
+
+
+        <li>
             <a href="../species/main.php"><i class="fa fa-paw"></i>Species</a></a>
         </li>
 

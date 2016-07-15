@@ -104,6 +104,10 @@
                     </li>
 
                     <li>
+                        <a href="view/pet/main.php"><i class="fa fa-paw"></i>Pets</a></a>
+                    </li>
+
+                    <li>
                         <a href="view/species/main.php"><i class="fa fa-paw"></i>Species</a></a>
                     </li>
 
