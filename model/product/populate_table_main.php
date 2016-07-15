@@ -2,22 +2,22 @@
     include('../master/connect.php');
 
 
-  $sql = "SELECT p.pet_id as id, p.pet_name as name,b.breed_name as breed,s.species_name as species,
-  p.color as color,p.markings as markings,p.birthdate as birthdate, TIMESTAMPDIFF(YEAR, p.birthdate , CURDATE()) as age,
-  p.sex as sex
-  FROM patient p, breed1 b, species s 
-  WHERE p.breed = b.breed_id 
-  AND (b.species_id = s.species_id) 
+  $sql = "SELECT p.product_id as id, p.product_name as product_name, c.cat_name as category_name, pk.pack_name as packaging_name, 
+  p.weight as bigat, u.unit_abbreviation as uom, p.description as remarks 
+  FROM products p, category c, packaging pk, units u 
+  WHERE (p.category = c.cat_id) 
+  AND (p.packaging = pk.pack_id) 
+  AND (p.unit = u.unit_id) 
   AND (p.status = 'active') 
-  GROUP BY p.pet_id";
+  GROUP BY p.product_id";
+
   $q = $conn->prepare($sql);
   $q -> execute();
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['id'],$fetch['name'],
-    	$fetch['breed'],$fetch['species'],$fetch['color'],$fetch['markings'],$fetch['birthdate'],
-      $fetch['age'],$fetch['sex']);				 	
+    $output[] = array ($fetch['id'],$fetch['product_name'],$fetch['category_name'],$fetch['packaging_name'],
+    	$fetch['bigat']."".$fetch['uom'],$fetch['remarks']);				 	
   }         
 $conn = null;             
 

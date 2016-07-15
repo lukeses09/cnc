@@ -4,7 +4,7 @@
 
 
   var table_main = $('#table_main').dataTable({
-    "aoColumnDefs": [ { "bSortable": false, "aTargets": [8,9] } ],
+    "aoColumnDefs": [ { "bSortable": false, "aTargets": [5,6] } ],
     "aaSorting": []
   });  //Initialize the datatable
 
@@ -12,19 +12,20 @@ function populate_table_main(){
 	//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/pet/populate_table_main.php",
+	  url: "../../model/product/populate_table_main.php",
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s)
 	  {
-		populate_breed_dropdown(); // function populate dropdown
+		populate_category_dropdown();
+		populate_packaging_dropdown();
 
 	    table_main.fnClearTable();      
 	    for(var i = 0; i < s.length; i++) 
 	    { 
 	      table_main.fnAddData
 	      ([
-	        s[i][1],s[i][2],s[i][3],s[i][4],s[i][5],s[i][6],s[i][7],s[i][8],
+	        s[i][1],s[i][2],s[i][3],s[i][4],s[i][5],
 	        '<button data-toggle="tooltip" onclick="client_row_view(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-warning " title="VIEW /Edit"> <i class="fa fa-eye"></i></button>',      	        
 	        '<button data-toggle="tooltip" onclick="client_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-danger" title="Delete"> <i class="fa fa-trash"></i> </button>',      
 	      ],false); 
@@ -37,25 +38,43 @@ function populate_table_main(){
 } //
 
 
-function populate_breed_dropdown(){ 
+function populate_category_dropdown(){ 
   //ajax now
   $.ajax ({
     type: "POST",
-    url: "../../model/breed/populate_table_main.php",
+    url: "../../model/category/populate_table_main.php",
     dataType: 'json',      
     cache: false,
     success: function(s)
     {
-      $('#f_breed').empty();
-      $('#f_breed').html('<option selected="selected" value="none">--SEARCH BREED--</option>');
+      $('#f_category').empty();
+      $('#f_category').html('<option selected="selected" value="none">--SEARCH CATEGORY--</option>');
       for(var i = 0; i < s.length; i++) { 
-        $('#f_breed').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
+        $('#f_category').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
       }       
     }  
   }); 
   //ajax end  
 } //
 
+function populate_packaging_dropdown(){ 
+  //ajax now
+  $.ajax ({
+    type: "POST",
+    url: "../../model/packaging/populate_table_main.php",
+    dataType: 'json',      
+    cache: false,
+    success: function(s)
+    {
+      $('#f_packaging').empty();
+      $('#f_packaging').html('<option selected="selected" value="none">--SEARCH PACKAGING--</option>');
+      for(var i = 0; i < s.length; i++) { 
+        $('#f_packaging').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
+      }       
+    }  
+  }); 
+  //ajax end  
+} //
 
 function reset(){
 	$('#btn_save').val('create');
