@@ -2,14 +2,14 @@
     include('../master/connect.php');
 
 
-  $sql = "SELECT * FROM units WHERE unit_status = 'active'";
+  $sql = "SELECT * FROM services WHERE status = 'active'";
   $q = $conn->prepare($sql);
   $q -> execute();
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['unit_id'],$fetch['unit_name'],$fetch['unit_abbreviation'],
-    	$fetch['unit_type']);				 	
+    $output[] = array ($fetch['service_id'],$fetch['service_name'],$fetch['category'],
+    	$fetch['price']);				 	
   }         
 $conn = null;             
 

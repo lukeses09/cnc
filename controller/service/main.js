@@ -12,7 +12,7 @@ function populate_table_main(){
 	//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/unit/populate_table_main.php",
+	  url: "../../model/service/populate_table_main.php",
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s)
@@ -23,7 +23,7 @@ function populate_table_main(){
 	    { 
 	      table_main.fnAddData
 	      ([
-	        s[i][1],s[i][2],s[i][3],
+	        s[i][1],s[i][2],comma(s[i][3]),
 	        '<button data-toggle="tooltip" onclick="client_row_view(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-warning " title="VIEW /Edit"> <i class="fa fa-eye"></i></button>',      	        
 	        '<button data-toggle="tooltip" onclick="client_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-danger" title="Delete"> <i class="fa fa-trash"></i> </button>',      
 	      ],false); 
@@ -42,13 +42,13 @@ function populate_table_main(){
 function reset(){
 	$('#btn_save').val('create');
 
-	$('#f_unit_name').val('');
-	$('#f_abbreviation').val('');
+	$('#f_service_name').val('');
+	$('#f_price').val('');
 
 
-	$('#f_unit_name_div').removeClass('has-error');     
-	$('#f_abbreviation_div').removeClass('has-error');     
-	$('#f_unit_type_div').removeClass('has-error');     
+	$('#f_service_name_div').removeClass('has-error');     
+	$('#f_category_div').removeClass('has-error');     
+	$('#f_price_div').removeClass('has-error');     
 
 }
 
@@ -57,26 +57,26 @@ function validate_form(){
 
 
 
-	if($('#f_unit_name').val()==''){
+	if($('#f_service_name').val()==''){
 		err = true;
-		$('#f_unit_name_div').addClass('has-error');
+		$('#f_service_name_div').addClass('has-error');
 	}
 	else
-		$('#f_unit_name_div').removeClass('has-error');	
+		$('#f_service_name_div').removeClass('has-error');	
 
-	if($('#f_abbreviation').val()==''){
+	if($('#f_price').val()=='' || $('#f_price').val()<=0){
 		err = true;
-		$('#f_abbreviation_div').addClass('has-error');
+		$('#f_price_div').addClass('has-error');
 	}
 	else
-		$('#f_abbreviation_div').removeClass('has-error');	
+		$('#f_price_div').removeClass('has-error');	
 
-	if($('#f_unit_type').val()=='' || $('#f_unit_type').val()=='none'){
+	if($('#f_category').val()=='' || $('#f_category').val()=='none'){
 		err = true;
-		$('#f_unit_type_div').addClass('has-error');
+		$('#f_category_div').addClass('has-error');
 	}
 	else
-		$('#f_unit_type_div').removeClass('has-error');		
+		$('#f_category_div').removeClass('has-error');		
 
 	/*if($('#f_contact').val()==''){
 		err = true;
@@ -159,7 +159,7 @@ function client_row_del(id){
   			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/unit/delete.php",
+			  url: "../../model/service/delete.php",
 			  data: 'id='+id,
 			  dataType: 'json',      
 			  cache: false,
@@ -176,16 +176,16 @@ function client_row_view(id){
 		//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/unit/fetch.php",
+	  url: "../../model/service/fetch.php",
 	  data: 'id='+id,
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s){		
 	  	$('#btn_save').val(id);
 
-	  	$('#f_unit_name').val(s[0][0]);	 // fetch name to field
+	  	$('#f_service_name').val(s[0][0]);	 // fetch name to field
 	  	$('#f_abbreviation').val(s[0][1]);	 // fetch name to field
-	  	$('#f_unit_type').val(s[0][2]);	 // fetch name to field
+	  	$('#f_service_type').val(s[0][2]);	 // fetch name to field
 			  			  		
   			  		
 	  	
@@ -201,17 +201,17 @@ $('#btn_save').click(function(){
 	if(validate_form()==true){}
 	else{
 
-		var unit_name = $('#f_unit_name').val();
+		var service_name = $('#f_service_name').val();
 		var abbreviation = $('#f_abbreviation').val();
-		var unit_type = $('#f_unit_type').val();
+		var service_type = $('#f_service_type').val();
 
-		var dataString = 'unit_name='+unit_name+'&abbreviation='+abbreviation+'&unit_type='+unit_type;
+		var dataString = 'service_name='+service_name+'&abbreviation='+abbreviation+'&service_type='+service_type;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/unit/create.php",
+			  url: "../../model/service/create.php",
 			  data: dataString,
 			  dataType: 'json',      
 			  cache: false,
@@ -227,7 +227,7 @@ $('#btn_save').click(function(){
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/unit/update.php",
+			  url: "../../model/service/update.php",
 			  data: dataString+'&id='+id,
 			  dataType: 'json',      
 			  cache: false,
