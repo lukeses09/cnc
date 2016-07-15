@@ -248,19 +248,21 @@ function client_row_view(id){
 		//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/pet/fetch.php",
+	  url: "../../model/product/fetch.php",
 	  data: 'id='+id,
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s){		
 	  	$('#btn_save').val(id);
 
-	  	$('#f_petname').val(s[0][0]);	 // fetch name to breedname			  			  	
+	  	$('#f_product').val(s[0][0]);			  			  	
 	    $('#opt'+s[0][1]).prop('selected',true); //selected dropdown
-	  	$('#f_color').val(s[0][2]);	 // fetch name to breedname			  			  	
-	  	$('#f_markings').val(s[0][3]);	 // fetch name to breedname			  			  	
-	  	$('#f_birthdate').val(s[0][4]);	 // fetch name to breedname			  			  	
-	  	$('#f_sex').val(s[0][5]);	 // fetch name to breedname			  			  	  			  		  
+	    $('#opt'+s[0][2]).prop('selected',true); //selected dropdown
+	  	$('#f_weight').val(s[0][3]);			  			  	
+	    $('#opt'+s[0][4]).prop('selected',true); //selected dropdown
+	  	$('#f_price').val(s[0][5]);			  			  	
+	  	$('#f_desc').val(s[0][6]);			  			  	
+
 	  }  
 	}); 
 	//ajax end

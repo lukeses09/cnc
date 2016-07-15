@@ -3,14 +3,14 @@
 
   $id = $_POST['id'];
 
-  $sql = "SELECT * FROM patient WHERE pet_id = ?";
+  $sql = "SELECT * FROM products WHERE product_id = ?";
   $q = $conn->prepare($sql);
   $q -> execute(array($id));
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['pet_name'],$fetch['breed'],$fetch['color'],$fetch['markings'],
-      $fetch['birthdate'],$fetch['sex']);				 	
+    $output[] = array ($fetch['product_name'],$fetch['category'],$fetch['packaging'],$fetch['weight'],
+      $fetch['unit'],$fetch['prod_price'],$fetch['description']);				 	
   }         
 $conn = null;             
 
