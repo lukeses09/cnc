@@ -1,15 +1,15 @@
 <?php
     include('../master/connect.php');
 
-$unit_name = trim($_POST['unit_name']);
-$abbreviation = trim($_POST['abbreviation']);
-$unit_type = trim($_POST['unit_type']);
+$service_name = trim($_POST['service_name']);
+$category = trim($_POST['category']);
+$price = trim($_POST['price']);
 
-$id = uniqid('U');
+$id = uniqid('SV');
 
-  $sql = "INSERT INTO units values(?,?,?,?,?)";
+  $sql = "INSERT INTO services values(?,?,?,?,?)";
   $q = $conn->prepare($sql);
-  $q -> execute(array($id,$unit_name,$abbreviation,$unit_type,'active'));
+  $q -> execute(array($id,$service_name,$category,$price,'active'));
      
 
 $conn = null;             

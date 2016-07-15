@@ -3,7 +3,7 @@
 
 $id = $_POST['id'];
 
-  $sql = "UPDATE units SET unit_status = 'inactive' WHERE unit_id = ?";
+  $sql = "UPDATE services SET status = 'inactive' WHERE service_id = ?";
   $q = $conn->prepare($sql);
   $q -> execute(array($id));
      
