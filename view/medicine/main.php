@@ -72,8 +72,11 @@
                     <th>Medicine</th>    
                     <th>Category</th>                     
                     <th>Packaging</th>                     
-                    <th>Weight</th>     
-                    <th>Price</th>                                                                                                                                                          
+                    <th>Dosage</th>     
+                    <th>Brand</th>   
+                    <th>Generic</th>
+                    <th>Content</th>
+                    <th>Price</th>                    
                     <th>Description</th>
                     <th style="width: 10px"></th>                       
                     <th style="width: 10px"></th>

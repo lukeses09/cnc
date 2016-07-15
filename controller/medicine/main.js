@@ -4,7 +4,7 @@
 
 
   var table_main = $('#table_main').dataTable({
-    "aoColumnDefs": [ { "bSortable": false, "aTargets": [5,6] } ],
+    "aoColumnDefs": [ { "bSortable": false, "aTargets": [9,10] } ],
     "aaSorting": []
   });  //Initialize the datatable
 
@@ -12,20 +12,20 @@ function populate_table_main(){
 	//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/product/populate_table_main.php",
+	  url: "../../model/medicine/populate_table_main.php",
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s)
 	  {
-		populate_category_dropdown();
-		populate_packaging_dropdown();
-		populate_unit_dropdown();
+		//populate_category_dropdown();
+		//populate_packaging_dropdown();
+		//populate_unit_dropdown();
 	    table_main.fnClearTable();      
 	    for(var i = 0; i < s.length; i++) 
 	    { 
 	      table_main.fnAddData
 	      ([
-	        s[i][1],s[i][2],s[i][3],s[i][4],s[i][5],s[i][6],
+	        s[i][1],s[i][2],s[i][3],s[i][4],s[i][5],s[i][6],s[i][7],comma(s[i][8]),s[i][9],
 	        '<button data-toggle="tooltip" onclick="client_row_view(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-warning " title="VIEW /Edit"> <i class="fa fa-eye"></i></button>',      	        
 	        '<button data-toggle="tooltip" onclick="client_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-danger" title="Delete"> <i class="fa fa-trash"></i> </button>',      
 	      ],false); 
@@ -98,12 +98,12 @@ function populate_unit_dropdown(){
 
 function reset(){
 	$('#btn_save').val('create');
-	$('#f_product').val('');
+	$('#f_medicine').val('');
 	$('#f_weight').val('');
 	$('#f_price').val('');
 	$('#f_desc').val('');
 
-	$('#f_product_div').removeClass('has-error');     
+	$('#f_medicine_div').removeClass('has-error');     
 	$('#f_category_div').removeClass('has-error');     
 	$('#f_packaging_div').removeClass('has-error');     
 	$('#f_weight_div').removeClass('has-error');
@@ -115,12 +115,12 @@ function reset(){
 function validate_form(){
 	err = false;
 
-	if($('#f_product').val()==''){
+	if($('#f_medicine').val()==''){
 		err = true;
-		$('#f_product_div').addClass('has-error');
+		$('#f_medicine_div').addClass('has-error');
 	}
 	else
-		$('#f_product_div').removeClass('has-error');	
+		$('#f_medicine_div').removeClass('has-error');	
 
 	if($('#f_category').val()=='' || $('#f_category').val()=='none'){
 		err = true;
@@ -231,7 +231,7 @@ function client_row_del(id){
   			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/product/delete.php",
+			  url: "../../model/medicine/delete.php",
 			  data: 'id='+id,
 			  dataType: 'json',      
 			  cache: false,
@@ -248,14 +248,14 @@ function client_row_view(id){
 		//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/product/fetch.php",
+	  url: "../../model/medicine/fetch.php",
 	  data: 'id='+id,
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s){		
 	  	$('#btn_save').val(id);
 
-	  	$('#f_product').val(s[0][0]);			  			  	
+	  	$('#f_medicine').val(s[0][0]);			  			  	
 	    $('#opt'+s[0][1]).prop('selected',true); //selected dropdown
 	    $('#opt'+s[0][2]).prop('selected',true); //selected dropdown
 	  	$('#f_weight').val(s[0][3]);			  			  	
@@ -275,7 +275,7 @@ $('#btn_save').click(function(){
 	if(validate_form()==true){}
 	else{
 
-		var product = $('#f_product').val();
+		var medicine = $('#f_medicine').val();
 		var category = $('#f_category').val();
 		var packaging = $('#f_packaging').val();
 		var weight = $('#f_weight').val();
@@ -283,13 +283,13 @@ $('#btn_save').click(function(){
 		var price = $('#f_price').val();
 		var desc = $('#f_desc').val();
 
-		var dataString = 'product='+product+'&category='+category+'&packaging='+packaging+'&weight='+weight+'&unit='+unit+'&price='+price+'&desc='+desc;
+		var dataString = 'medicine='+medicine+'&category='+category+'&packaging='+packaging+'&weight='+weight+'&unit='+unit+'&price='+price+'&desc='+desc;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/product/create.php",
+			  url: "../../model/medicine/create.php",
 			  data: dataString,
 			  dataType: 'json',      
 			  cache: false,
@@ -305,7 +305,7 @@ $('#btn_save').click(function(){
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/product/update.php",
+			  url: "../../model/medicine/update.php",
 			  data: dataString+'&id='+id,
 			  dataType: 'json',      
 			  cache: false,
