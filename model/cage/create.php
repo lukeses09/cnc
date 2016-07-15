@@ -1,15 +1,15 @@
 <?php
     include('../master/connect.php');
 
-$service_name = trim($_POST['service_name']);
-$category = trim($_POST['category']);
+$cage_name = trim($_POST['cage_name']);
+$cage_size = trim($_POST['cage_size']);
 $price = trim($_POST['price']);
 
 $id = uniqid('SV');
 
-  $sql = "INSERT INTO services values(?,?,?,?,?)";
+  $sql = "INSERT INTO cage values(?,?,?,?,?)";
   $q = $conn->prepare($sql);
-  $q -> execute(array($id,$service_name,$category,$price,'active'));
+  $q -> execute(array($id,$cage_name,$cage_size,$price,'active'));
      
 
 $conn = null;             

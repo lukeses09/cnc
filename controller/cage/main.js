@@ -194,10 +194,10 @@ $('#btn_save').click(function(){
 	else{
 
 		var cage_name = $('#f_cage_name').val();
-		var category = $('#f_category').val();
+		var cage_size = $('#f_cage_size').val();
 		var price = $('#f_price').val();
 
-		var dataString = 'cage_name='+cage_name+'&category='+category+'&price='+price;
+		var dataString = 'cage_name='+cage_name+'&cage_size='+cage_size+'&price='+price;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
