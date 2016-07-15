@@ -100,10 +100,6 @@
                     </li>   
 
                     <li>
-                        <a href="view/discount/main.php"><i class="fa fa-sitemap "></i>Discounts</a></a>
-                    </li>
-
-                    <li>
                         <a href="view/pet/main.php"><i class="fa fa-paw"></i>Pets</a></a>
                     </li>
 
@@ -120,6 +116,10 @@
 
                     <li>
                         <a href="view/category/main.php"><i class="fa fa-opencart"></i>Category</a></a>
+                    </li>
+
+                    <li>
+                        <a href="view/packaging/main.php"><i class="fa fa-opencart"></i>Packaging</a></a>
                     </li>
 
                 </ul>

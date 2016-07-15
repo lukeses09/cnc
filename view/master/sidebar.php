@@ -27,10 +27,6 @@ show specific links else not admin it will hide it)   using if else conditions i
         </li>
 
         <li>
-            <a href="../discount/main.php"><i class="fa fa-sitemap "></i>Discounts</a></a>
-        </li>
-
-        <li>
             <a href="../pet/main.php"><i class="fa fa-paw"></i>Pets</a></a>
         </li>
 
@@ -49,6 +45,10 @@ show specific links else not admin it will hide it)   using if else conditions i
 
         <li>
             <a href="../category/main.php"><i class="fa fa-opencart"></i>Category</a></a>
+        </li>
+
+        <li>
+            <a href="../packaging/main.php"><i class="fa fa-opencart"></i>Packaging</a></a>
         </li>
 
         </li>
