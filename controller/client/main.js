@@ -23,8 +23,8 @@ function populate_table_main(){
 	      table_main.fnAddData
 	      ([
 	        s[i][1],s[i][2],s[i][3],s[i][4],s[i][5],
-	        '<button data-toggle="tooltip" onclick="client_row_view(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn btn-xs " title="VIEW /Edit"> <i class="fa fa-eye"></i></button>',      	        
-	        '<button data-toggle="tooltip" onclick="client_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn btn-xs  btn-danger" title="Delete"> <i class="fa fa-trash"></i> </button>',      
+	        '<button data-toggle="tooltip" onclick="client_row_view(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn btn-warning" title="VIEW /Edit"> <i class="fa fa-eye"></i></button>',      	        
+	        '<button data-toggle="tooltip" onclick="client_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn btn-danger" title="Delete"> <i class="fa fa-trash"></i> </button>',      
 	      ],false); 
 	      table_main.fnDraw();
 
