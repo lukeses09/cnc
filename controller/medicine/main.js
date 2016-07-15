@@ -21,7 +21,8 @@ function populate_table_main(){
 		populate_packaging_dropdown();
 		populate_dosage_dropdown();		
 		populate_unit_dropdown();
-		
+		populate_brand_dropdown();
+
 	    table_main.fnClearTable();      
 	    for(var i = 0; i < s.length; i++) 
 	    { 
@@ -97,6 +98,26 @@ function populate_dosage_dropdown(){
   //ajax end  
 } //
 
+function populate_brand_dropdown(){ 
+  //ajax now
+  $.ajax ({
+    type: "POST",
+    url: "../../model/brand/populate_table_main.php",
+    dataType: 'json',      
+    cache: false,
+    success: function(s)
+    {
+      $('#f_brand').empty();
+      $('#f_brand').html('<option selected="selected" value="none">--SELECT BRAND--</option>');
+      for(var i = 0; i < s.length; i++) { 
+        $('#f_brand').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
+      }       
+    }  
+  }); 
+  //ajax end  
+} //
+
+
 function populate_unit_dropdown(){ 
   //ajax now
   $.ajax ({
@@ -120,17 +141,20 @@ function populate_unit_dropdown(){
 function reset(){
 	$('#btn_save').val('create');
 	$('#f_medicine').val('');
-	$('#f_weight').val('');
+	$('#f_content').val('');
 	$('#f_price').val('');
 	$('#f_desc').val('');
 
 	$('#f_medicine_div').removeClass('has-error');     
 	$('#f_category_div').removeClass('has-error');     
 	$('#f_packaging_div').removeClass('has-error');     
-	$('#f_weight_div').removeClass('has-error');
-	$('#f_unit_div').removeClass('has-error');  
+	$('#f_dosage_div').removeClass('has-error');
+	$('#f_brand_div').removeClass('has-error');  
+	$('#f_content_div').removeClass('has-error');     
+	$('#f_unit_div').removeClass('has-error');     
 	$('#f_price_div').removeClass('has-error');     
-	$('#f_desc_div').removeClass('has-error');     	
+	$('#f_desc_div').removeClass('has-error');     
+
 }
 
 function validate_form(){
@@ -157,6 +181,13 @@ function validate_form(){
 	else
 		$('#f_packaging_div').removeClass('has-error');	
 
+	if($('#f_dosage').val()=='' || $('#f_dosage').val()=='none'){
+		err = true;
+		$('#f_dosage_div').addClass('has-error');
+	}
+	else
+		$('#f_dosage_div').removeClass('has-error');	
+
 	if($('#f_unit').val()=='' || $('#f_unit').val()=='none'){
 		err = true;
 		$('#f_unit_div').addClass('has-error');
@@ -164,12 +195,19 @@ function validate_form(){
 	else
 		$('#f_unit_div').removeClass('has-error');	
 
-	if($('#f_weight').val()==''){
+	if($('#f_brand').val()=='' || $('#f_brand').val()=='none'){
 		err = true;
-		$('#f_weight_div').addClass('has-error');
+		$('#f_brand_div').addClass('has-error');
+	}
+	else	
+		$('#f_brand_div').removeClass('has-error');	
+
+	if($('#f_content').val()=='' || $('#f_content').val()<=0 ){
+		err = true;
+		$('#f_content_div').addClass('has-error');
 	}
 	else
-		$('#f_weight_div').removeClass('has-error');	
+		$('#f_content_div').removeClass('has-error');	
 
 	if($('#f_price').val()=='' || $('#f_price').val()<=0){
 		err = true;
