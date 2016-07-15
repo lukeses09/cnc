@@ -231,7 +231,7 @@ function client_row_del(id){
   			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/pet/delete.php",
+			  url: "../../model/product/delete.php",
 			  data: 'id='+id,
 			  dataType: 'json',      
 			  cache: false,
@@ -305,7 +305,7 @@ $('#btn_save').click(function(){
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/pet/update.php",
+			  url: "../../model/product/update.php",
 			  data: dataString+'&id='+id,
 			  dataType: 'json',      
 			  cache: false,
