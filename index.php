@@ -118,6 +118,10 @@
                         <a href="view/unit/main.php"><i class="fa fa-opencart"></i>Unit</a></a>
                     </li>
 
+                    <li>
+                        <a href="view/category/main.php"><i class="fa fa-opencart"></i>Category</a></a>
+                    </li>
+
                 </ul>
             </div>
 
