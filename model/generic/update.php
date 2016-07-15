@@ -2,12 +2,12 @@
     include('../master/connect.php');
 
 $id = $_POST['id'];
-$category = trim($_POST['category']);
+$generic = trim($_POST['generic']);
 
 
-  $sql = "UPDATE category SET cat_name=? where cat_id=?";
+  $sql = "UPDATE generic SET generic_name=? where generic_id=?";
   $q = $conn->prepare($sql);
-  $q -> execute(array($category, $id));
+  $q -> execute(array($generic, $id));
      
 $conn = null;             
 

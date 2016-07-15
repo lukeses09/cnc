@@ -2,14 +2,14 @@
     include('../master/connect.php');
 
 
-  $sql = "SELECT * from category where cat_status='active'";
+  $sql = "SELECT * from generic where status='active'";
   $q = $conn->prepare($sql);
   $q -> execute();
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['cat_id'],$fetch['cat_name'],
-    	$fetch['cat_status']);				 	
+    $output[] = array ($fetch['generic_id'],$fetch['generic_name'],
+    	$fetch['status']);				 	
   }         
 $conn = null;             
 

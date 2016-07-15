@@ -1,14 +1,14 @@
 <?php
     include('../master/connect.php');
 
-$category = trim($_POST['category']);
+$generic = trim($_POST['generic']);
 
 
 $id = uniqid('C');
 
-  $sql = "INSERT INTO category values(?,?,?)";
+  $sql = "INSERT INTO generic values(?,?,?)";
   $q = $conn->prepare($sql);
-  $q -> execute(array($id,$category,'active'));
+  $q -> execute(array($id,$generic,'active'));
      
 
 $conn = null;             
