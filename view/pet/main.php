@@ -52,7 +52,7 @@
             <div id="page-inner">
 
                 <div class="row">
-                    <div class="col-md-8 col-xs-12"><h2 style="color:grey"><i class=""></i> PETS </h2></div>
+                    <div class="col-md-8 col-xs-12"><h2 style="color:grey"><i class="fa fa-paw"></i> Pets </h2></div>
                     <div class="col-md-2 col-xs-12"><br><button id="btn_reset" class="btn btn-block btn-lg">Reset</button></div>                    
                     <div class="col-md-2 col-xs-12"><br><button id="btn_save" value="create" class="btn btn-block btn-success btn-lg">SAVE</button></div>
                 </div>      
@@ -69,8 +69,14 @@
               <table id="table_main" class="table table-condensed table-striped table-hover">
                 <thead>
                   <tr>
-                    <th>Pet Name</th>   
-                    <th>Breed</th>                          
+                    <th>Pets Name</th>
+                    <th>Breed</th>    
+                    <th>Species</th>                     
+                    <th>Color</th>                     
+                    <th>Marking</th>                     
+                    <th>Birthdate</th>                     
+                    <th>Age</th> 
+                    <th>Sex</th>                                                                                                  
                     <th style="width: 10px"></th>                       
                     <th style="width: 10px"></th>
                   </tr>
@@ -106,7 +112,7 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
       <!-- BOOTSTRAP SCRIPTS -->
 
-    <script src="../../controller/pets/main.js" type="text/javascript"></script>
+    <script src="../../controller/pet/main.js" type="text/javascript"></script>
     <script type="text/javascript">
 
     </script>

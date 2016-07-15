@@ -3,7 +3,7 @@
 
 $id = $_POST['id'];
 
-  $sql = "UPDATE Clients SET clients_status = 'inactive' WHERE clients_id = ?";
+  $sql = "UPDATE patient SET status = 'inactive' WHERE pet_id = ?";
   $q = $conn->prepare($sql);
   $q -> execute(array($id));
      

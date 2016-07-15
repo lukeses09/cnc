@@ -4,7 +4,7 @@
 
 
   var table_main = $('#table_main').dataTable({
-    "aoColumnDefs": [ { "bSortable": false, "aTargets": [] } ],
+    "aoColumnDefs": [ { "bSortable": false, "aTargets": [8,9] } ],
     "aaSorting": []
   });  //Initialize the datatable
 
@@ -12,18 +12,20 @@ function populate_table_main(){
 	//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/pets/populate_table_main.php",
+	  url: "../../model/pet/populate_table_main.php",
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s)
 	  {
+		populate_breed_dropdown(); // function populate dropdown
+
 	    table_main.fnClearTable();      
 	    for(var i = 0; i < s.length; i++) 
 	    { 
 	      table_main.fnAddData
 	      ([
-	        s[i][1],s[i][2],
-	        '<button data-toggle="tooltip" onclick="client_row_view(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn btn-warning " title="VIEW /Edit"> <i class="fa fa-eye"></i></button>',      	        
+	        s[i][1],s[i][2],s[i][3],s[i][4],s[i][5],s[i][6],s[i][7],s[i][8],
+	        '<button data-toggle="tooltip" onclick="client_row_view(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-warning " title="VIEW /Edit"> <i class="fa fa-eye"></i></button>',      	        
 	        '<button data-toggle="tooltip" onclick="client_row_del(this.value)" value='+s[i][0]+' data-toggle="modal" class="btn  btn-danger" title="Delete"> <i class="fa fa-trash"></i> </button>',      
 	      ],false); 
 	      table_main.fnDraw();
@@ -34,29 +36,41 @@ function populate_table_main(){
 	//ajax end  
 } //
 
+
+function populate_breed_dropdown(){ 
+  //ajax now
+  $.ajax ({
+    type: "POST",
+    url: "../../model/breed/populate_table_main.php",
+    dataType: 'json',      
+    cache: false,
+    success: function(s)
+    {
+      $('#f_breed').empty();
+      $('#f_breed').html('<option selected="selected" value="none">--SEARCH BREED--</option>');
+      for(var i = 0; i < s.length; i++) { 
+        $('#f_breed').append('<option id="opt'+s[i][0]+'" value="'+s[i][0]+'">'+s[i][1]+'</option>');
+      }       
+    }  
+  }); 
+  //ajax end  
+} //
+
+
 function reset(){
 	$('#btn_save').val('create');
-	$('#f_name').val('');
-	$('#f_contact').val('');
-	$('#f_bdate').val('');
-	$('#f_gender').val('none');
-	$('#f_mstatus').val('single');
-	$('#f_address').val('');
-	$('#f_job').val('');
-	$('#f_spouse').val('');
-	$('#f_dependents').val('');
+	$('#f_petname').val('');
+	$('#f_breed').val('none');
+	$('#f_color').val('');
+	$('#f_markings').val();
+	$('#f_birthdate').val();
 
-	$('#f_name_div').removeClass('has-error');     
-	$('#f_contact_div').removeClass('has-error');     
-	$('#f_bdate_div').removeClass('has-error');     
-	$('#f_gender_div').removeClass('has-error');
-	$('#f_mstatus_div').removeClass('has-error');  
-	$('#f_address_div').removeClass('has-error');     
-	$('#f_job_div').removeClass('has-error');     
-	$('#f_spouse_div').removeClass('has-error');     
-	$('#f_dependents_div').removeClass('has-error');     
-
-	$('#spouse_div').css('display','none');
+	$('#f_petname_div').removeClass('has-error');     
+	$('#f_breed_div').removeClass('has-error');     
+	$('#f_color_div').removeClass('has-error');     
+	$('#f_markings_div').removeClass('has-error');
+	$('#f_birthdate_div').removeClass('has-error');  
+	$('#f_sex_div').removeClass('has-error');     
 }
 
 function validate_form(){
@@ -64,14 +78,49 @@ function validate_form(){
 
 
 
-	if($('#f_name').val()==''){
+	if($('#f_petname').val()==''){
 		err = true;
-		$('#f_name_div').addClass('has-error');
+		$('#f_petname_div').addClass('has-error');
 	}
 	else
-		$('#f_name_div').removeClass('has-error');		
+		$('#f_petname_div').removeClass('has-error');	
 
-	if($('#f_contact').val()==''){
+	if($('#f_breed').val()=='' || $('#f_breed').val()=='none'){
+		err = true;
+		$('#f_breed_div').addClass('has-error');
+	}
+	else
+		$('#f_breed_div').removeClass('has-error');		
+
+	if($('#f_color').val()==''){
+		err = true;
+		$('#f_color_div').addClass('has-error');
+	}
+	else
+		$('#f_color_div').removeClass('has-error');	
+
+	if($('#f_markings').val()==''){
+		err = true;
+		$('#f_markings_div').addClass('has-error');
+	}
+	else
+		$('#f_markings_div').removeClass('has-error');	
+
+	if($('#f_birthdate').val()==''){
+		err = true;
+		$('#f_birthdate_div').addClass('has-error');
+	}
+	else
+		$('#f_birthdate_div').removeClass('has-error');	
+
+
+	if($('#f_sex').val()=='' || $('#f_sex').val()=='none'){
+		err = true;
+		$('#f_sex_div').addClass('has-error');
+	}
+	else
+		$('#f_sex_div').removeClass('has-error');	
+	/*if($('#f_contact').val()==''){
 		err = true;
 		$('#f_contact_div').addClass('has-error');
 	}
@@ -132,18 +181,10 @@ function validate_form(){
 			$('#f_dependents_div').removeClass('has-error');	
 
 	}
-
-
-
+*/
 	return err;				
 }
 
-function showSpouse(get){
-	$('#f_spouse_div').removeClass('has-error');     
-	$('#f_dependents_div').removeClass('has-error');  	
-	if(get=='married'){$('#spouse_div').css('display','block');}
-	else{ $('#spouse_div').css('display','none'); }
-}
 
 function client_row_del(id){
 
@@ -152,7 +193,7 @@ function client_row_del(id){
   			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/clients/delete.php",
+			  url: "../../model/pet/delete.php",
 			  data: 'id='+id,
 			  dataType: 'json',      
 			  cache: false,
@@ -169,19 +210,19 @@ function client_row_view(id){
 		//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/clients/fetch.php",
+	  url: "../../model/pet/fetch.php",
 	  data: 'id='+id,
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s){		
 	  	$('#btn_save').val(id);
 
-	  	$('#f_name').val(s[0][0]);	$('#f_contact').val(s[0][1]);	$('#f_bdate').val(s[0][2]);
-	  	$('#f_gender').val(s[0][3]);	$('#f_mstatus').val(s[0][4]);	$('#f_address').val(s[0][5]);	$('#f_job').val(s[0][6]);
-	  	if(s[0][4]=='married'){
-	  		$('#spouse_div').css('display','block');
-		  	$('#f_spouse').val(s[0][7]);	$('#f_dependents').val(s[0][8]);	  		
-	  	}
+	  	$('#f_petname').val(s[0][0]);	 // fetch name to breedname			  			  	
+	    $('#opt'+s[0][1]).prop('selected',true); //selected dropdown
+	  	$('#f_color').val(s[0][2]);	 // fetch name to breedname			  			  	
+	  	$('#f_markings').val(s[0][3]);	 // fetch name to breedname			  			  	
+	  	$('#f_birthdate').val(s[0][4]);	 // fetch name to breedname			  			  	
+	  	$('#f_sex').val(s[0][5]);	 // fetch name to breedname			  			  	  			  		  
 	  }  
 	}); 
 	//ajax end
@@ -194,24 +235,20 @@ $('#btn_save').click(function(){
 	if(validate_form()==true){}
 	else{
 
-		var client_name = $('#f_name').val();
-		var client_contact = $('#f_contact').val();
-		var client_bdate = $('#f_bdate').val();
-		var client_gender = $('#f_gender').val();
-		var client_mstatus = $('#f_mstatus').val();
-		var client_address = $('#f_address').val();
-		var client_job = $('#f_job').val();
-		var client_spouse = $('#f_spouse').val();
-		var client_dependents = $('#f_dependents').val();
-		var dataString = 'client_name='+client_name+'&client_contact='+client_contact+'&client_bdate='+client_bdate;
-		dataString+='&client_gender='+client_gender+'&client_mstatus='+client_mstatus+'&client_address='+client_address;
-		dataString+='&client_job='+client_job+'&client_spouse='+client_spouse+'&client_dependents='+client_dependents;
+		var pet_name = $('#f_petname').val();
+		var breed = $('#f_breed').val();
+		var color = $('#f_color').val();
+		var markings = $('#f_markings').val();
+		var birthdate = $('#f_birthdate').val();
+		var sex = $('#f_sex').val();
+
+		var dataString = 'pet_name='+pet_name+'&breed='+breed+'&color='+color+'&markings='+markings+'&birthdate='+birthdate+'&sex='+sex;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/clients/create.php",
+			  url: "../../model/pet/create.php",
 			  data: dataString,
 			  dataType: 'json',      
 			  cache: false,
@@ -227,7 +264,7 @@ $('#btn_save').click(function(){
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/clients/update.php",
+			  url: "../../model/pet/update.php",
 			  data: dataString+'&id='+id,
 			  dataType: 'json',      
 			  cache: false,
