@@ -2,13 +2,13 @@
     include('../master/connect.php');
 
 
-  $sql = "SELECT * FROM services WHERE status = 'active'";
+  $sql = "SELECT * FROM cage WHERE status = 'active'";
   $q = $conn->prepare($sql);
   $q -> execute();
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['service_id'],$fetch['service_name'],$fetch['category'],
+    $output[] = array ($fetch['cage_id'],$fetch['cage_name'],$fetch['cage_size'],
     	$fetch['price']);				 	
   }         
 $conn = null;             

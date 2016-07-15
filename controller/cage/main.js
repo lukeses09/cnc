@@ -12,7 +12,7 @@ function populate_table_main(){
 	//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/service/populate_table_main.php",
+	  url: "../../model/cage/populate_table_main.php",
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s)
@@ -42,12 +42,13 @@ function populate_table_main(){
 function reset(){
 	$('#btn_save').val('create');
 
-	$('#f_service_name').val('');
+	$('#f_cage_name').val('');
+	$('#f_cage_size').val('');	
 	$('#f_price').val('');
 
 
-	$('#f_service_name_div').removeClass('has-error');     
-	$('#f_category_div').removeClass('has-error');     
+	$('#f_cage_name_div').removeClass('has-error');     
+	$('#f_cage_size_div').removeClass('has-error');     
 	$('#f_price_div').removeClass('has-error');     
 
 }
@@ -57,12 +58,12 @@ function validate_form(){
 
 
 
-	if($('#f_service_name').val()==''){
+	if($('#f_cage_name').val()==''){
 		err = true;
-		$('#f_service_name_div').addClass('has-error');
+		$('#f_cage_name_div').addClass('has-error');
 	}
 	else
-		$('#f_service_name_div').removeClass('has-error');	
+		$('#f_cage_name_div').removeClass('has-error');	
 
 	if($('#f_price').val()=='' || $('#f_price').val()<=0){
 		err = true;
@@ -71,12 +72,12 @@ function validate_form(){
 	else
 		$('#f_price_div').removeClass('has-error');	
 
-	if($('#f_category').val()=='' || $('#f_category').val()=='none'){
+	if($('#f_cage_size').val()==''){
 		err = true;
-		$('#f_category_div').addClass('has-error');
+		$('#f_cage_size_div').addClass('has-error');
 	}
 	else
-		$('#f_category_div').removeClass('has-error');		
+		$('#f_cage_size_div').removeClass('has-error');		
 
 	/*if($('#f_contact').val()==''){
 		err = true;
@@ -153,7 +154,7 @@ function client_row_del(id){
   			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/service/delete.php",
+			  url: "../../model/cage/delete.php",
 			  data: 'id='+id,
 			  dataType: 'json',      
 			  cache: false,
@@ -170,14 +171,14 @@ function client_row_view(id){
 		//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/service/fetch.php",
+	  url: "../../model/cage/fetch.php",
 	  data: 'id='+id,
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s){		
 	  	$('#btn_save').val(id);
 
-	  	$('#f_service_name').val(s[0][0]);	 // fetch name to field
+	  	$('#f_cage_name').val(s[0][0]);	 // fetch name to field
 	  	$('#f_category').val(s[0][1]);	 // fetch name to field
 	  	$('#f_price').val(s[0][2]);	 // fetch name to field			  			  		  			  		  	
 	  }  
@@ -192,17 +193,17 @@ $('#btn_save').click(function(){
 	if(validate_form()==true){}
 	else{
 
-		var service_name = $('#f_service_name').val();
+		var cage_name = $('#f_cage_name').val();
 		var category = $('#f_category').val();
 		var price = $('#f_price').val();
 
-		var dataString = 'service_name='+service_name+'&category='+category+'&price='+price;
+		var dataString = 'cage_name='+cage_name+'&category='+category+'&price='+price;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/service/create.php",
+			  url: "../../model/cage/create.php",
 			  data: dataString,
 			  dataType: 'json',      
 			  cache: false,
@@ -218,7 +219,7 @@ $('#btn_save').click(function(){
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/service/update.php",
+			  url: "../../model/cage/update.php",
 			  data: dataString+'&id='+id,
 			  dataType: 'json',      
 			  cache: false,
