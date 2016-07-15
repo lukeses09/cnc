@@ -1,20 +1,22 @@
 <?php
     include('../master/connect.php');
 
-$product = trim($_POST['product']);
+$medicine = trim($_POST['medicine']);
 $category = trim($_POST['category']);
 $packaging = trim($_POST['packaging']);
-$weight = trim($_POST['weight']);
-$unit = $_POST['unit'];
+$dosage = trim($_POST['dosage']);
+$brand = $_POST['brand'];
+$content = trim($_POST['content']);
+$unit = trim($_POST['unit']);
 $price = trim($_POST['price']);
 $desc = trim($_POST['desc']);
 
 
-$id = uniqid('PR');
+$id = uniqid('MD');
 
-  $sql = "INSERT INTO products values(?,?,?,?,?,?,?,?,?)";
+  $sql = "INSERT INTO medicines values(?,?,?,?,?,?,?,?,?,?,?)";
   $q = $conn->prepare($sql);
-  $q -> execute(array($id,$product,$category,$packaging,$weight,$unit,$desc,$price,'active'));
+  $q -> execute(array($id,$medicine,$category,$packaging,$dosage,$brand,$content,$unit,$price,$desc,'active'));
      
 
 $conn = null;             

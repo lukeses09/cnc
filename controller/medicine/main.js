@@ -337,12 +337,15 @@ $('#btn_save').click(function(){
 		var medicine = $('#f_medicine').val();
 		var category = $('#f_category').val();
 		var packaging = $('#f_packaging').val();
-		var weight = $('#f_weight').val();
+		var dosage = $('#f_dosage').val();
+		var brand = $('#f_brand').val();
+		var content = $('#f_content').val();
 		var unit = $('#f_unit').val();
 		var price = $('#f_price').val();
 		var desc = $('#f_desc').val();
 
-		var dataString = 'medicine='+medicine+'&category='+category+'&packaging='+packaging+'&weight='+weight+'&unit='+unit+'&price='+price+'&desc='+desc;
+		var dataString = 'medicine='+medicine+'&category='+category+'&packaging='+packaging+'&dosage='+dosage;
+		dataString+='&brand='+brand+'&content='+content+'&unit='+unit+'&price='+price+'&desc='+desc;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
