@@ -317,10 +317,12 @@ function client_row_view(id){
 	  	$('#f_medicine').val(s[0][0]);			  			  	
 	    $('#opt'+s[0][1]).prop('selected',true); //selected dropdown
 	    $('#opt'+s[0][2]).prop('selected',true); //selected dropdown
-	  	$('#f_weight').val(s[0][3]);			  			  	
-	    $('#opt'+s[0][4]).prop('selected',true); //selected dropdown
-	  	$('#f_price').val(s[0][5]);			  			  	
-	  	$('#f_desc').val(s[0][6]);			  			  	
+	    $('#opt'+s[0][3]).prop('selected',true); //selected dropdown	
+	    $('#opt'+s[0][4]).prop('selected',true); //selected dropdown	        
+	  	$('#f_content').val(s[0][5]);			  			  	
+	    $('#opt'+s[0][6]).prop('selected',true); //selected dropdown
+	  	$('#f_price').val(s[0][7]);			  			  	
+	  	$('#f_desc').val(s[0][8]);			  			  	
 
 	  }  
 	}); 
