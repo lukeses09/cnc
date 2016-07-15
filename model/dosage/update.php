@@ -2,12 +2,12 @@
     include('../master/connect.php');
 
 $id = $_POST['id'];
-$generic = trim($_POST['generic']);
+$dosage = trim($_POST['dosage']);
 
 
-  $sql = "UPDATE generic SET generic_name=? where generic_id=?";
+  $sql = "UPDATE dosage SET dosage_name=? where dosage_id=?";
   $q = $conn->prepare($sql);
-  $q -> execute(array($generic, $id));
+  $q -> execute(array($dosage, $id));
      
 $conn = null;             
 

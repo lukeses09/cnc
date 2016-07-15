@@ -3,7 +3,7 @@
 
 $id = $_POST['id'];
 
-  $sql = "UPDATE generic SET status = 'inactive' WHERE generic_id = ?";
+  $sql = "UPDATE dosage SET dosage_status = 'inactive' WHERE dosage_id = ?";
   $q = $conn->prepare($sql);
   $q -> execute(array($id));
   

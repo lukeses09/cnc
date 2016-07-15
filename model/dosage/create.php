@@ -1,14 +1,14 @@
 <?php
     include('../master/connect.php');
 
-$generic = trim($_POST['generic']);
+$dosage = trim($_POST['dosage']);
 
 
-$id = uniqid('G');
+$id = uniqid('DO');
 
-  $sql = "INSERT INTO generic values(?,?,?)";
+  $sql = "INSERT INTO dosage values(?,?,?)";
   $q = $conn->prepare($sql);
-  $q -> execute(array($id,$generic,'active'));
+  $q -> execute(array($id,$dosage,'active'));
      
 
 $conn = null;             

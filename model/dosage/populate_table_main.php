@@ -2,14 +2,14 @@
     include('../master/connect.php');
 
 
-  $sql = "SELECT * from generic where status='active'";
+  $sql = "SELECT * from dosage where dosage_status='active'";
   $q = $conn->prepare($sql);
   $q -> execute();
   $browse = $q -> fetchAll();
   foreach($browse as $fetch)
   {
-    $output[] = array ($fetch['generic_id'],$fetch['generic_name'],
-    	$fetch['status']);				 	
+    $output[] = array ($fetch['dosage_id'],$fetch['dosage_name'],
+    	$fetch['dosage_status']);				 	
   }         
 $conn = null;             
 

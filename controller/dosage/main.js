@@ -12,7 +12,7 @@ function populate_table_main(){
 	//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/generic/populate_table_main.php",
+	  url: "../../model/dosage/populate_table_main.php",
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s)
@@ -36,10 +36,10 @@ function populate_table_main(){
 
 function reset(){
 	$('#btn_save').val('create');
-	$('#f_generic').val('');
+	$('#f_dosage').val('');
 
 
-	$('#f_generic_div').removeClass('has-error');     
+	$('#f_dosage_div').removeClass('has-error');     
 }
 
 function validate_form(){
@@ -47,12 +47,12 @@ function validate_form(){
 
 
 
-	if($('#f_generic').val()==''){
+	if($('#f_dosage').val()==''){
 		err = true;
-		$('#f_generic_div').addClass('has-error');
+		$('#f_dosage_div').addClass('has-error');
 	}
 	else
-		$('#f_generic_div').removeClass('has-error');		
+		$('#f_dosage_div').removeClass('has-error');		
 
 	/*if($('#f_contact').val()==''){
 		err = true;
@@ -130,7 +130,7 @@ function client_row_del(id){
   			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/generic/delete.php",
+			  url: "../../model/dosage/delete.php",
 			  data: 'id='+id,
 			  dataType: 'json',      
 			  cache: false,
@@ -147,14 +147,14 @@ function client_row_view(id){
 		//ajax now
 	$.ajax ({
 	  type: "POST",
-	  url: "../../model/generic/fetch.php",
+	  url: "../../model/dosage/fetch.php",
 	  data: 'id='+id,
 	  dataType: 'json',      
 	  cache: false,
 	  success: function(s){		
 	  	$('#btn_save').val(id);
 
-	  	$('#f_generic').val(s[0][0]);	
+	  	$('#f_dosage').val(s[0][0]);	
 	  			  		
 	  	
 	  }  
@@ -169,15 +169,15 @@ $('#btn_save').click(function(){
 	if(validate_form()==true){}
 	else{
 
-		var generic = $('#f_generic').val();
+		var dosage = $('#f_dosage').val();
 
-		var dataString = 'generic='+generic;
+		var dataString = 'dosage='+dosage;
 
 		if(this.value=='create'){ //CREATE MODE
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/generic/create.php",
+			  url: "../../model/dosage/create.php",
 			  data: dataString,
 			  dataType: 'json',      
 			  cache: false,
@@ -193,7 +193,7 @@ $('#btn_save').click(function(){
 			//ajax now
 			$.ajax ({
 			  type: "POST",
-			  url: "../../model/generic/update.php",
+			  url: "../../model/dosage/update.php",
 			  data: dataString+'&id='+id,
 			  dataType: 'json',      
 			  cache: false,
