@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2016 at 01:38 PM
+-- Generation Time: Jul 16, 2016 at 02:15 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -27,9 +27,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `brand` (
-  `brand_id` varchar(200) NOT NULL,
-  `brand_name` varchar(200) NOT NULL
+  `brand_id` varchar(25) NOT NULL,
+  `brand_generic_id` varchar(25) NOT NULL,
+  `brand_name` varchar(50) NOT NULL,
+  `brand_status` char(10) NOT NULL,
+  PRIMARY KEY (`brand_id`),
+  KEY `brand_name` (`brand_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `brand`
+--
+
+INSERT INTO `brand` (`brand_id`, `brand_generic_id`, `brand_name`, `brand_status`) VALUES
+('B578936bc4d06a', 'undefined', 'undefined', 'active'),
+('B578936d3cafc7', 'Hashtag', '1', 'active'),
+('B57893715dad7c', '1', 'Hashtags', 'inactive'),
+('B57893b74bfdef', '1', 'Medkol', 'active'),
+('BR128397', 'C578933a176117', 'Biogesic', 'active');
 
 -- --------------------------------------------------------
 
@@ -50,11 +65,14 @@ CREATE TABLE IF NOT EXISTS `breed1` (
 --
 
 INSERT INTO `breed1` (`breed_id`, `species_id`, `breed_name`, `status`) VALUES
-('1', '1', 'beeeee', 'active'),
+('1', '10', 'Drarb', 'active'),
 ('2', '1', 'pomeranian', 'inactive'),
-('3', '9', 'shitzu', 'active'),
-('BR5788c5d6cd921', '0', 'undefined', 'inactive'),
-('BR5788c70abc064', '10', 'iuhklj', 'active');
+('3', '9', 'Beatle', 'active'),
+('BR5788c70abc064', '10', 'Ioen', 'active'),
+('BR578910db4280a', '', '', 'active'),
+('BR578910e6eae87', '', '', 'active'),
+('BR57891107c251a', '', '', 'active'),
+('BR578935ad1cc0e', 'undefined', 'undefined', 'active');
 
 -- --------------------------------------------------------
 
@@ -65,9 +83,7 @@ INSERT INTO `breed1` (`breed_id`, `species_id`, `breed_name`, `status`) VALUES
 CREATE TABLE IF NOT EXISTS `cage` (
   `cage_id` varchar(200) NOT NULL,
   `cage_name` varchar(100) NOT NULL,
-  `length` varchar(200) NOT NULL,
-  `width` varchar(200) NOT NULL,
-  `height` varchar(200) NOT NULL,
+  `cage_size` varchar(200) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `status` varchar(30) NOT NULL,
   PRIMARY KEY (`cage_id`)
@@ -77,8 +93,85 @@ CREATE TABLE IF NOT EXISTS `cage` (
 -- Dumping data for table `cage`
 --
 
-INSERT INTO `cage` (`cage_id`, `cage_name`, `length`, `width`, `height`, `price`, `status`) VALUES
-('1', 'Cage A', '', '', '', '20.00', 'inactive');
+INSERT INTO `cage` (`cage_id`, `cage_name`, `cage_size`, `price`, `status`) VALUES
+('1', 'Cage A', '12x19x10', '20.00', 'active'),
+('SV57894e94bb964', 'Blue Box', '12 x 01 x 190 by Meter', '70.00', 'inactive');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `cat_id` varchar(25) NOT NULL,
+  `cat_name` varchar(100) NOT NULL,
+  `cat_status` char(10) NOT NULL,
+  PRIMARY KEY (`cat_id`),
+  KEY `cat_name` (`cat_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`cat_id`, `cat_name`, `cat_status`) VALUES
+('C1023', 'Soap n Wash', 'active'),
+('C57891c7a35558', '', 'inactive'),
+('C57891c9a369bf', 'Shampooo', 'active'),
+('C57893ae89a6c7', 'Special Medicine', 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients`
+--
+
+CREATE TABLE IF NOT EXISTS `clients` (
+  `clients_id` varchar(25) NOT NULL,
+  `clients_name` varchar(100) NOT NULL,
+  `clients_address` varchar(150) NOT NULL,
+  `clients_contact` varchar(15) NOT NULL,
+  `clients_bdate` date NOT NULL,
+  `clients_gender` char(10) NOT NULL,
+  `clients_job` varchar(50) NOT NULL,
+  `clients_mstatus` varchar(10) NOT NULL,
+  `clients_spousename` varchar(100) DEFAULT NULL,
+  `clients_dependents` int(99) DEFAULT NULL,
+  `clients_status` char(10) NOT NULL,
+  PRIMARY KEY (`clients_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`clients_id`, `clients_name`, `clients_address`, `clients_contact`, `clients_bdate`, `clients_gender`, `clients_job`, `clients_mstatus`, `clients_spousename`, `clients_dependents`, `clients_status`) VALUES
+('CL571883cfe6e21', 'Moses Jerome Lucas', 'Dressrosa, Grandline St.', '09063402308', '1996-10-02', 'male', 'Rails Engineer', 'divorced', '', 0, 'active'),
+('CL5718840b4ed1c', 'Jake Finn', 'Arabasta', '0906390928', '1995-11-02', 'male', 'Dogger', 'married', 'Rainbow Ponyia', 8, 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dosage`
+--
+
+CREATE TABLE IF NOT EXISTS `dosage` (
+  `dosage_id` varchar(25) NOT NULL,
+  `dosage_name` varchar(100) NOT NULL,
+  `dosage_status` char(10) NOT NULL,
+  PRIMARY KEY (`dosage_id`),
+  KEY `cat_name` (`dosage_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dosage`
+--
+
+INSERT INTO `dosage` (`dosage_id`, `dosage_name`, `dosage_status`) VALUES
+('D57891c9a369bf', '2 teaspoons', 'inactive'),
+('DO578938f772655', '1 Shot Injection', 'active'),
+('DS12321', '25 Drops', 'active');
 
 -- --------------------------------------------------------
 
@@ -129,7 +222,9 @@ CREATE TABLE IF NOT EXISTS `generic` (
 --
 
 INSERT INTO `generic` (`generic_id`, `generic_name`, `status`) VALUES
-('1', 'as', 'active');
+('1', 'Noozapi', 'active'),
+('C57893380cba17', 'Paracetamon', 'inactive'),
+('C578933a176117', 'Paracetamol', 'active');
 
 -- --------------------------------------------------------
 
@@ -141,11 +236,11 @@ CREATE TABLE IF NOT EXISTS `medicines` (
   `medicine_id` varchar(25) NOT NULL DEFAULT '0',
   `medicine_name` varchar(100) DEFAULT NULL,
   `category` varchar(100) NOT NULL,
-  `packaging` varchar(200) NOT NULL,
-  `type` varchar(200) NOT NULL,
+  `packaging` varchar(25) NOT NULL,
+  `dosage` varchar(25) NOT NULL,
   `brand` varchar(200) NOT NULL,
-  `generic_name` varchar(200) NOT NULL,
   `content` varchar(200) NOT NULL,
+  `unit` varchar(25) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `description` varchar(200) NOT NULL,
   `status` varchar(30) NOT NULL,
@@ -156,9 +251,11 @@ CREATE TABLE IF NOT EXISTS `medicines` (
 -- Dumping data for table `medicines`
 --
 
-INSERT INTO `medicines` (`medicine_id`, `medicine_name`, `category`, `packaging`, `type`, `brand`, `generic_name`, `content`, `price`, `description`, `status`) VALUES
+INSERT INTO `medicines` (`medicine_id`, `medicine_name`, `category`, `packaging`, `dosage`, `brand`, `content`, `unit`, `price`, `description`, `status`) VALUES
 ('1', 'paracetamol', 'pang ubo', '', '', '', '', '', '100.00', 'small', 'inactive'),
-('2', 'paracetamol', 'sada', '', '', '', '', '', '12.00', 'djksajd', 'active');
+('2', 'paracetamol', 'sada', '', '', '', '', '', '12.00', 'djksajd', 'active'),
+('MD102398', 'Chemical X', 'C57893ae89a6c7', 'PK12983', 'DO578938f772655', 'BR128397', '17', 'U57893b3d7f15c', '5600.00', 'PPWG', 'active'),
+('MD578942ee61930', 'harf', 'C57891c9a369bf', 'PK1238', 'DO578938f772655', 'B57893b74bfdef', '12', 'U102939', '900.00', 'Hugh', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -190,20 +287,42 @@ INSERT INTO `owner` (`owner_id`, `firstname`, `middle_initial`, `lastname`, `bda
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `packaging`
+--
+
+CREATE TABLE IF NOT EXISTS `packaging` (
+  `pack_id` varchar(25) NOT NULL,
+  `pack_name` varchar(100) NOT NULL,
+  `pack_status` char(10) NOT NULL,
+  PRIMARY KEY (`pack_id`),
+  KEY `cat_name` (`pack_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `packaging`
+--
+
+INSERT INTO `packaging` (`pack_id`, `pack_name`, `pack_status`) VALUES
+('C57891f3095341', 'Cardboard Box Type', 'inactive'),
+('PK1238', 'Plastic Saschet', 'active'),
+('PK12983', 'Cardboard Box', 'active');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patient`
 --
 
 CREATE TABLE IF NOT EXISTS `patient` (
   `owner_id` varchar(25) DEFAULT NULL,
-  `pet_id` int(11) NOT NULL DEFAULT '0',
+  `pet_id` varchar(25) NOT NULL DEFAULT '0',
   `pet_name` varchar(100) DEFAULT NULL,
-  `species` varchar(100) DEFAULT NULL,
-  `breed` varchar(100) DEFAULT NULL,
+  `breed` varchar(25) DEFAULT NULL,
   `color` varchar(200) NOT NULL,
   `markings` varchar(200) NOT NULL,
-  `birthday` date DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
   `sex` varchar(10) DEFAULT NULL,
-  `status` varchar(30) NOT NULL,
+  `status` char(10) NOT NULL,
   PRIMARY KEY (`pet_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -211,18 +330,22 @@ CREATE TABLE IF NOT EXISTS `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`owner_id`, `pet_id`, `pet_name`, `species`, `breed`, `color`, `markings`, `birthday`, `sex`, `status`) VALUES
-('1', 1, 'ponyo', 'horse ', 'horse', '0', '', '0000-00-00', 'F', 'active'),
-('1', 2, 'ponyo', 'dklwmd', 'mdwlkem', 'mklml', 'kmlm', '0000-00-00', 'M', 'inactive'),
-('1', 3, 'sample', 'sam', '', '', '', '0000-00-00', 'M', 'inactive'),
-('1', 4, 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '0000-00-00', 'M', 'inactive'),
-('1', 5, 'NALLY', 'KLS;', 'LDKF', 'CKLJDK', 'JLKWJK', '0000-00-00', 'M', 'inactive'),
-('1', 6, 'KMLKMKM', 'KMLKM', 'KMLM', 'LKMKL', 'KML', '0000-00-00', 'F', 'active'),
-('1', 7, 'kjkklkj', 'kjljk', 'jlkj', 'jkljlk', 'lkjlkj', '0000-00-00', 'M', 'inactive'),
-('1', 8, 'kjkhk', 'hjhhk', 'hjk', 'hkjh', 'kjhkj', '0000-00-00', 'M', 'active'),
-('1', 9, 'bjkbjk', 'jbjbbkjbj', 'bjkb', 'kjbkjb', 'bkjbk', '0000-00-00', 'M', 'inactive'),
-('1', 10, 'bnbm', 'bnmbm', 'nnbnnb', 'n,mn', 'mn,mn', '0000-00-00', 'M', 'inactive'),
-('1', 11, 'mb,b', 'nbmbn', 'mnbmn', 'bmnbmnb', 'mnbb', '0000-00-00', 'M', 'inactive');
+INSERT INTO `patient` (`owner_id`, `pet_id`, `pet_name`, `breed`, `color`, `markings`, `birthdate`, `sex`, `status`) VALUES
+('1', '1', 'ponyo', '1', 'White', 'Left Eye', '2013-09-22', 'F', 'active'),
+('1', '10', 'bnbm', '3', 'n,mn', 'mn,mn', '0000-00-00', 'M', 'inactive'),
+('1', '11', 'mb,b', '3', 'bmnbmnb', 'mnbb', '0000-00-00', 'M', 'inactive'),
+('1', '2', 'ponyo', '2', 'mklml', 'kmlm', '0000-00-00', 'M', 'inactive'),
+('1', '3', 'sample', '1', '', '', '0000-00-00', 'M', 'inactive'),
+('1', '4', 'Sample', '3', 'Sample', 'Sample', '0000-00-00', 'M', 'inactive'),
+('1', '5', 'NALLY', '2', 'CKLJDK', 'JLKWJK', '0000-00-00', 'M', 'inactive'),
+('1', '6', 'KMLKMKM', '1', 'LKMKL', 'KML', '2013-01-01', 'F', 'active'),
+('1', '7', 'kjkklkj', '1', 'jkljlk', 'lkjlkj', '0000-00-00', 'M', 'inactive'),
+('1', '8', 'kjkhk', '3', 'hkjh', 'kjhkj', '2014-06-11', 'M', 'active'),
+('1', '9', 'bjkbjk', '2', 'kjbkjb', 'bkjbk', '0000-00-00', 'M', 'inactive'),
+(NULL, 'PT578911ed5d824', '', '1', 'Gold', 'Heart', '2015-11-12', 'F', 'inactive'),
+(NULL, 'PT57891227d39b6', 'Francesca', '1', 'Silver', 'Sa', '2014-07-07', 'F', 'active'),
+(NULL, 'PT57892e2700d84', '', '', '', '', NULL, '', 'active'),
+(NULL, 'PT57897b49a6984', 'tre', '1', 'black', 'none', '2016-07-17', 'F', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -236,7 +359,9 @@ CREATE TABLE IF NOT EXISTS `products` (
   `category` varchar(200) NOT NULL,
   `packaging` varchar(200) NOT NULL,
   `weight` varchar(200) NOT NULL,
+  `unit` varchar(25) NOT NULL,
   `description` varchar(200) NOT NULL,
+  `prod_price` decimal(9,2) NOT NULL,
   `status` varchar(30) NOT NULL,
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -245,11 +370,14 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `category`, `packaging`, `weight`, `description`, `status`) VALUES
-('1', 'dog leash', '', '', '', 'large', 'active'),
-('2', 'sample', '', '', '', '', 'inactive'),
-('3', 'sample', '', '', '', 'large', 'inactive'),
-('4', 'med1', '', '', '', 'aadsa', 'active');
+INSERT INTO `products` (`product_id`, `product_name`, `category`, `packaging`, `weight`, `unit`, `description`, `prod_price`, `status`) VALUES
+('2', 'sample', '', '', '', '', '', '0.00', 'inactive'),
+('3', 'sample', '', '', '', '', 'large', '0.00', 'inactive'),
+('4', 'med1', '', '', '', '', 'aadsa', '0.00', 'active'),
+('PR1231', 'Dog Wow', 'C57891c9a369bf', 'PK1238', '25', 'U578920740365d\n', 'large', '0.00', 'active'),
+('PR12381293', 'Swivel', 'C57891c9a369bf', 'PK1238', '25', 'U578920740365d', 'Ocsilliation', '250.00', 'active'),
+('PR57892ed80c498', 'Enuma Elish', 'C1023', 'PK1238', '150', 'U578920740365d', 'Grayth Beginning', '7000.00', 'active'),
+('PR578942319cdbc', '', 'C57891c9a369bf', 'PK12983', '', 'U578919c3091fd', 'fuck', '899.00', 'active');
 
 -- --------------------------------------------------------
 
@@ -271,9 +399,11 @@ CREATE TABLE IF NOT EXISTS `services` (
 --
 
 INSERT INTO `services` (`service_id`, `service_name`, `category`, `price`, `status`) VALUES
-('1', 'cleaning', 'Vet', 400, 'active'),
-('2', 'boarding', 'Grooming', 40, 'active'),
-('3', 'check up', 'Vet', 500, 'inactive');
+('1', 'Cleaning', 'Vet', 900, 'active'),
+('2', 'boarding', 'Grooming', 40, 'inactive'),
+('3', 'check up', 'Vet', 500, 'inactive'),
+('SV57894ad56f5bd', 'Assassination', 'Grooming', 39000, 'active'),
+('SV57894af9dede1', 'Boarding', 'Vet', 280, 'active');
 
 -- --------------------------------------------------------
 
@@ -313,10 +443,24 @@ INSERT INTO `species` (`species_id`, `species_name`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `units` (
-  `unit_id` varchar(200) NOT NULL,
+  `unit_id` varchar(25) NOT NULL,
   `unit_name` varchar(200) NOT NULL,
-  `unit_type` varchar(200) NOT NULL
+  `unit_abbreviation` varchar(25) NOT NULL,
+  `unit_type` varchar(200) NOT NULL,
+  `unit_status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `units`
+--
+
+INSERT INTO `units` (`unit_id`, `unit_name`, `unit_abbreviation`, `unit_type`, `unit_status`) VALUES
+('U12839', 'CM', '', 'Length', ''),
+('U102939', 'Meter', 'M', 'Mass', 'active'),
+('U57891973ec7c6', 'Centimeter', 'CM', 'length', 'inactive'),
+('U578919c3091fd', 'Centimeter', 'CM', 'Length', 'active'),
+('U578920740365d', 'Kilogram', 'KG', 'Mass', 'active'),
+('U57893b3d7f15c', 'Milimeter', 'ML', 'Mass', 'active');
 
 -- --------------------------------------------------------
 
